@@ -1,0 +1,275 @@
+/* ============================= */
+/* ===== EVEREST HERO 2.0 ===== */
+/* ============================= */
+
+/* Root colors (if not already defined globally) */
+:root {
+  --color-primary-dark: #0f0c0a;
+  --color-accent: #d4a017;
+  --color-accent-light: #f5d37a;
+  --color-accent-gold: #f0b90b;
+  --color-secondary-light: #f8edda;
+  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ================= HERO BASE ================= */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 720px;
+  background: var(--color-primary-dark);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* ================= BACKGROUND SLIDER ================= */
+
+.sliding-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0; /* no negative z-index */
+}
+
+.bg-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: slideShow 18s infinite ease-in-out;
+  transform: scale(1.08);
+  filter: brightness(0.6) contrast(1.05) saturate(1.1);
+  will-change: transform, opacity;
+}
+
+
+@keyframes slideShow {
+  0% { opacity: 0; transform: scale(1.08); }
+  8% { opacity: 1; transform: scale(1.03); }
+  30% { opacity: 1; transform: scale(1); }
+  40% { opacity: 0; transform: scale(1.03); }
+  100% { opacity: 0; transform: scale(1.08); }
+}
+
+
+/* ================= OVERLAY ================= */
+
+.texture-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 30% 50%, rgba(212,160,23,0.12) 0%, transparent 60%),
+    linear-gradient(110deg, rgba(10,8,6,0.8) 0%, rgba(25,18,12,0.6) 50%, rgba(5,4,3,0.85) 100%);
+}
+
+/* ================= CONTENT ================= */
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 0 8%;
+}
+
+.hero-main {
+  max-width: 900px;
+  animation: fadeUp 1s ease forwards;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= SUP TEXT ================= */
+
+.hero-sup {
+  font-size: 1rem;
+  letter-spacing: 3px;
+  color: var(--color-accent-light);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.8rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--color-accent);
+  text-transform: uppercase;
+}
+
+/* ================= TITLE ================= */
+
+.text-slider {
+  position: relative;
+  overflow: hidden;
+  margin: 1.5rem 0;
+  min-height: 9rem;
+  display: flex;
+  align-items: center;
+}
+
+.slide-text-item {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+}
+
+.slide-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.05;
+  text-shadow: 0 15px 40px rgba(0,0,0,0.6);
+}
+
+
+.slide-text-item.animate {
+  animation: textSlide 0.8s ease forwards;
+}
+
+
+@keyframes textSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-sub {
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  color: #ffeec9;
+  margin-top: 0.7rem;
+  letter-spacing: 1px;
+}
+
+/* Gold accent text */
+.accent-gold {
+  background: linear-gradient(145deg, var(--color-accent-light), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ================= DESCRIPTION ================= */
+
+.hero-description {
+  font-size: 1.05rem;
+  max-width: 650px;
+  color: #f8edda;
+  margin: 1.8rem 0 2.2rem;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
+  padding: 0.7rem 1.4rem;
+  border-radius: 60px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(212,160,23,0.3);
+}
+
+/* ================= BUTTONS ================= */
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn-primary,
+.btn-outline {
+  padding: 0.9rem 2.4rem;
+  border-radius: 60px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: linear-gradient(145deg, var(--color-accent), var(--color-accent-gold));
+  color: #0f0c0a;
+  border: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(212,160,23,0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1.8px solid var(--color-secondary-light);
+  color: #fff;
+}
+
+.btn-outline:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: var(--color-accent);
+  transform: translateY(-3px);
+}
+
+/* ================= MINI INFO BAR ================= */
+
+.hero-mini-info {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(12px);
+  padding: 0.9rem 2.5rem;
+  border-radius: 50px;
+  border: 1px solid rgba(212,160,23,0.3);
+  font-size: 0.9rem;
+  color: #f8edda;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 650px;
+  }
+
+  .hero-content {
+    padding: 0 6%;
+  }
+
+  .hero-mini-info {
+    font-size: 0.8rem;
+    padding: 0.7rem 1.5rem;
+    gap: 0.8rem;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+}

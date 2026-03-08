@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Everest Masala · collage restored · full premium</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- AOS library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #0f0c0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        html[data-lang="cz"] [data-i18n] {
+            display: none;
+        }
+        html[data-lang="en"] [data-i18n-cz] {
+            display: none;
+        }
+
+        /* ===== CULTURAL TEXTURE OVERLAY (unchanged) ===== */
+        .cultural-texture {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: overlay;
+            opacity: 0.25;
+            background: 
+                repeating-linear-gradient(45deg, rgba(200, 120, 50, 0.03) 0px, rgba(200, 120, 50, 0.03) 20px, transparent 20px, transparent 40px),
+                radial-gradient(circle at 30% 40%, rgba(180, 130, 70, 0.08) 0%, transparent 30%),
+                repeating-radial-gradient(circle at 70% 80%, rgba(170, 140, 90, 0.04) 0, rgba(170, 140, 90, 0.04) 2px, transparent 2px, transparent 12px),
+                linear-gradient(112deg, rgba(130, 70, 30, 0.02) 0%, rgba(200, 160, 100, 0.02) 50%, rgba(90, 50, 20, 0.02) 100%);
+            background-blend-mode: soft-light, overlay, screen, normal;
+        }
+        .texture-layer2 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10000;
+            opacity: 0.15;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj48cGF0aCBkPSJNMjAgMjBhMTAgMTAgMCAwIDEgMTAgMTAgMTAgMTAgMCAwIDEtMTAgMTAgMTAgMTAgMCAwIDEtMTAtMTAgMTAgMTAgMCAwIDEgMTAtMTB6bTQwIDBhMTAgMTAgMCAwIDEgMTAgMTAgMTAgMTAgMCAwIDEtMTAgMTAgMTAgMTAgMCAwIDEtMTAtMTAgMTAgMTAgMCAwIDEgMTAtMTB6TTIwIDYwYTEwIDEwIDAgMCAxIDEwIDEwIDEwIDEwIDAgMCAxLTEwIDEwIDEwIDEwIDAgMCAxLTEwLTEwIDEwIDEwIDAgMCAxIDEwLTEwem00MCAwYTEwIDEwIDAgMCAxIDEwIDEwIDEwIDEwIDAgMCAxLTEwIDEwIDEwIDEwIDAgMCAxLTEwLTEwIDEwIDEwIDAgMCAxIDEwLTEweiIgZmlsbD0iI2RjYTI2MCIgZmlsbC1vcGFjaXR5PSIwLjA3IiAvPjwvc3ZnPg=='),
+                        repeating-linear-gradient(0deg, rgba(100,60,20,0.02) 0px, rgba(100,60,20,0.02) 2px, transparent 2px, transparent 8px);
+            background-blend-mode: overlay;
+        }
+
+        .curved-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .curved-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 100%;
+            height: 18px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 20" preserveAspectRatio="none"><path d="M5,10 Q30,0 60,10 T115,10" stroke="%23ffa500" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.9"/></svg>') bottom no-repeat;
+            background-size: contain;
+            transform: scaleX(1.1);
+        }
+
+        /* ----- HERO (fully responsive, unchanged) ----- */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 650px;
+            background-color: var(--color-primary-dark);
+            isolation: isolate;
+        }
+        .sliding-bg { position: absolute; top:0; left:0; width:100%; height:100%; z-index:0; overflow:hidden; }
+        .bg-slide { position:absolute; top:0; left:0; width:100%; height:100%; background-size:cover; background-position:center; opacity:0; animation:slideShow 18s infinite cubic-bezier(0.4,0,0.2,1); transform:scale(1.08); filter:brightness(0.8) saturate(1.3) contrast(1.1); }
+        .bg-1 { background-image:url('https://images.unsplash.com/photo-1585937421612-70a008356c36?q=80&w=1936&auto=format&fit=crop'); }
+        .bg-2 { background-image:url('https://images.unsplash.com/photo-1606491956689-2ea866880c84?q=80&w=1887&auto=format&fit=crop'); animation-delay:6s; }
+        .bg-3 { background-image:url('https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=1887&auto=format&fit=crop'); animation-delay:12s; }
+        @keyframes slideShow { 0%{opacity:0; transform:scale(1.08);} 8%{opacity:1; transform:scale(1.02);} 30%{opacity:1; transform:scale(1);} 40%{opacity:0; transform:scale(1.02);} 100%{opacity:0; transform:scale(1.08);} }
+        .texture-overlay { position:absolute; top:0; left:0; width:100%; height:100%; z-index:2; pointer-events:none; background:radial-gradient(circle at 30% 50%, rgba(200,150,70,0.12) 0%, transparent 60%), linear-gradient(105deg, rgba(15,10,7,0.4) 0%, rgba(40,25,15,0.2) 50%, rgba(10,8,5,0.5) 100%); background-blend-mode:overlay,soft-light; }
+        .linen-texture { position:absolute; top:0; left:0; width:100%; height:100%; z-index:3; pointer-events:none; background-image:repeating-linear-gradient(45deg, rgba(255,215,140,0.02) 0px, rgba(255,215,140,0.02) 2px, transparent 2px, transparent 6px); opacity:0.5; }
+        .hero-content { position:relative; z-index:20; display:flex; align-items:center; width:100%; height:100%; padding:0 5% 0 8%; }
+        .hero-main { max-width:880px; width:100%; animation:fadeUp 1.2s cubic-bezier(0.2,0.9,0.3,1) forwards; }
+        @keyframes fadeUp { 0%{opacity:0; transform:translateY(30px);} 100%{opacity:1; transform:translateY(0);} }
+        .hero-sup { font-size:1.2rem; letter-spacing:4px; color:var(--color-secondary-light); display:flex; align-items:center; gap:12px; margin-bottom:1.5rem; border-left:4px solid var(--color-accent); padding-left:1.5rem; flex-wrap:wrap; }
+        .text-slider { margin:1.5rem 0; height:7.5rem; overflow:hidden; filter:drop-shadow(0 4px 20px #00000080); }
+        .slide-text { display:flex; flex-direction:column; transition:transform 0.8s cubic-bezier(0.23,1,0.32,1); }
+        .slide-text-item { height:7.5rem; display:flex; flex-direction:column; justify-content:center; }
+        .slide-title { font-family:'Playfair Display',serif; font-size:clamp(2.2rem, 10vw, 5rem); font-weight:800; color:#fff; text-shadow:0 4px 30px #00000080; line-height:1.1; }
+        .slide-sub { font-size:clamp(1.1rem, 3vw, 1.6rem); color:#ffeec9; margin-top:0.3rem; }
+        .accent-gold { background:linear-gradient(145deg, var(--color-accent-light), var(--color-accent)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; }
+        .hero-description { font-size:1.1rem; max-width:600px; color:#fff4e2; margin:1.8rem 0 2.2rem; background:rgba(0,0,0,0.2); backdrop-filter:blur(3px); padding:0.6rem 1.2rem; border-radius:60px; display:inline-block; transition:opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .hero-buttons { display:flex; flex-wrap:wrap; gap:1.2rem; }
+        .btn-primary, .btn-outline { padding:0.9rem 2.2rem; font-size:1.1rem; border-radius:60px; transition:0.3s; }
+        .btn-primary { background:var(--color-accent); color:var(--color-primary-dark); border:none; display:inline-flex; align-items:center; gap:8px; font-weight:600; }
+        .btn-outline { background:transparent; border:1.8px solid var(--color-secondary-light); backdrop-filter:blur(10px); color:var(--color-white); display:inline-flex; align-items:center; gap:8px; }
+        .hero-mini-info { position:absolute; bottom:1.5rem; right:5%; left:5%; width:auto; max-width:700px; margin:0 auto; background:rgba(10,8,6,0.7); backdrop-filter:blur(18px); padding:0.8rem 1.5rem; border-radius:60px; border:1px solid #e6b44680; color:#f8edda; font-size:0.9rem; text-align:center; z-index:25; }
+
+        /* ===== ABOUT US – ORIGINAL COLLAGE LAYOUT (FULLY RESTORED) ===== */
+        .about-section {
+            background: linear-gradient(135deg, var(--color-primary-dark) 0%, #1a1f2e 100%);
+            padding: 6rem 10%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 4rem;
+            border-top: 1px solid rgba(107, 155, 212, 0.2);
+            border-bottom: 1px solid rgba(107, 155, 212, 0.2);
+        }
+        .about-left {
+            flex: 1 1 400px;
+        }
+        .about-left h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 2.2rem;
+        }
+        .about-desc {
+            font-size: 1.2rem;
+            color: var(--color-secondary-light);
+            line-height: 1.7;
+            margin: 2.5rem 0 2rem;
+        }
+        .service-points {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(107, 155, 212, 0.05);
+            padding: 1rem 1.2rem;
+            border-radius: 50px;
+            border: 1px solid rgba(107, 155, 212, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .service-item:hover {
+            background: rgba(107, 155, 212, 0.15);
+            transform: translateX(8px);
+            border-color: var(--color-accent);
+        }
+        .service-item i {
+            font-size: 1.8rem;
+            color: var(--color-accent);
+            width: 2.4rem;
+        }
+        .service-item span {
+            font-size: 1.2rem;
+            color: var(--color-secondary-light);
+        }
+        .about-right {
+            flex: 1 1 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        /* ORIGINAL COLLAGE GRID (exactly as previous) */
+        .collage-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+        }
+        .collage-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 24px;
+            border: 1px solid #5e4a30;
+            transition: 0.4s;
+        }
+        .collage-img:hover {
+            transform: scale(1.02);
+            border-color: #b59054;
+        }
+        .collage-item1 {
+            grid-row: span 2;
+            height: 100%;
+            min-height: 280px;
+        }
+        .collage-item2, .collage-item3 {
+            height: 160px;
+        }
+        .horizontal-bottom-img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 24px;
+            border: 1px solid #5e4a30;
+            margin-top: 0.8rem;
+        }
+
+        /* GALLERY multi‑frame (unchanged) */
+        .gallery-section { background:linear-gradient(135deg, var(--color-primary-dark) 0%, #1a1f2e 100%); padding:5rem 10%; text-align:center; }
+        .gallery-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:2rem; margin-top:4rem; }
+        .gallery-frame { position:relative; border-radius:32px; overflow:hidden; border:1px solid #4c3c28; aspect-ratio:4/3; background:#1a130e; }
+        .frame-slider { position:relative; width:100%; height:100%; }
+        .frame-img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.2s; }
+        .frame-img.active { opacity:1; z-index:2; }
+        .frame-caption { position:absolute; bottom:0; left:0; width:100%; background:linear-gradient(transparent, rgba(0,0,0,0.9)); color:var(--color-white); padding:1rem; font-size:1.2rem; text-align:left; transform:translateY(100%); transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .gallery-frame:hover .frame-caption { transform:translateY(0); }
+
+        /* REVIEW, RESERVE, PARTNER (responsive) */
+        .review-section { background:linear-gradient(135deg, #1a1f2e 0%, var(--color-primary-dark) 100%); padding:5rem 10%; text-align:center; }
+        .review-carousel { max-width:800px; margin:4rem auto 0; overflow:hidden; border-radius:40px; border:1px solid #5e4a30; background:#1f1914; }
+        .review-track { display:flex; transition:transform 0.8s ease; }
+        .review-slide { flex:0 0 100%; padding:3rem 2.5rem; }
+        .review-text { font-size:1.6rem; font-style:italic; color:var(--color-secondary-light); }
+        .review-author { margin-top:1.8rem; font-size:1.2rem; color:var(--color-accent); }
+
+        .reserve-section { background:linear-gradient(135deg, var(--color-primary-dark) 0%, #1a1f2e 100%); padding:5rem 10%; display:flex; flex-wrap:wrap; gap:4rem; }
+        .reserve-info { flex:1 1 350px; }
+        .reserve-info h2 { font-size:3rem; color:var(--color-white); margin-bottom:2.5rem; }
+        .info-item { display:flex; gap:1.2rem; margin-bottom:1.8rem; align-items:center; }
+        .info-item i { font-size:2rem; color:var(--color-accent); width:2.5rem; }
+        .info-item p { font-size:1.2rem; color:var(--color-secondary-light); }
+        .map-placeholder { width:100%; height:220px; background:#2f261e; border-radius:40px; border:2px solid #5e4a30; background-image:url('https://images.unsplash.com/photo-1569336415962-a4bd9f69c07b?q=80&w=1931&auto=format&fit=crop'); background-size:cover; background-position:center; }
+        .reserve-form { flex:1 1 400px; background:rgba(26, 43, 74, 0.6); backdrop-filter:blur(10px); padding:2.5rem; border-radius:48px; border:1px solid rgba(107, 155, 212, 0.3); }
+        .form-group { margin-bottom:1.8rem; }
+        .form-group input, .form-group select, .form-group textarea { width:100%; padding:1.2rem 1.5rem; background:rgba(26, 43, 74, 0.5); border:1px solid rgba(107, 155, 212, 0.3); border-radius:50px; font-size:1rem; color:var(--color-white); transition:all 0.3s ease; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline:none; border-color:var(--color-accent); box-shadow:0 0 0 3px rgba(255,165,0,0.1); }
+        .form-btn { background:var(--color-accent); padding:1.2rem; width:100%; border-radius:60px; font-size:1.3rem; font-weight:700; color:var(--color-primary-dark); border:none; cursor:pointer; transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .form-btn:hover { background:var(--color-accent-gold); transform:translateY(-2px); box-shadow:0 8px 25px rgba(255,165,0,0.4); }
+
+        .partner-section { background:linear-gradient(135deg, #1a1f2e 0%, var(--color-primary-dark) 100%); padding:5rem 10%; text-align:center; }
+        .partner-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; margin-top:4rem; }
+        .partner-card { background:rgba(26, 43, 74, 0.6); backdrop-filter:blur(10px); padding:2rem 1.5rem; border-radius:40px; border:1px solid rgba(107, 155, 212, 0.3); transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1); display:flex; flex-direction:column; align-items:center; }
+        .partner-card:hover { transform:translateY(-10px); border-color:var(--color-accent); box-shadow:0 12px 40px rgba(255,165,0,0.2); }
+        .partner-logo { width:100px; height:100px; object-fit:contain; margin-bottom:1rem; }
+        .partner-card h3 { font-size:2rem; color:var(--color-white); }
+        .partner-card p { color:var(--color-secondary-light); margin-bottom:2rem; }
+        .order-btn { background:transparent; border:2px solid var(--color-secondary-light); padding:0.9rem 2rem; border-radius:50px; font-size:1.1rem; color:var(--color-white); display:inline-block; cursor:pointer; transition:all 0.3s ease; }
+        .order-btn:hover { border-color:var(--color-accent); background:rgba(255,165,0,0.1); transform:translateY(-2px); }
+
+        /* ----- BOOK NOW MODAL ----- */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(8px);
+            z-index: 10001;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .modal-backdrop.is-open {
+            display: flex;
+            opacity: 1;
+        }
+        .modal-box {
+            background: var(--color-primary-dark);
+            border: 1px solid rgba(107, 155, 212, 0.3);
+            border-radius: 32px;
+            max-width: 480px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.5);
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .modal-backdrop.is-open .modal-box {
+            transform: scale(1);
+        }
+        .modal-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--color-white);
+            margin-bottom: 1.5rem;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: rgba(107, 155, 212, 0.3);
+            color: var(--color-white);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .modal-close:hover {
+            background: var(--color-accent);
+            color: var(--color-primary-dark);
+            transform: rotate(90deg);
+        }
+        .modal-form .form-group {
+            margin-bottom: 1.2rem;
+        }
+        .modal-form label {
+            display: block;
+            font-size: 0.9rem;
+            color: #e4d7c2;
+            margin-bottom: 0.4rem;
+        }
+        .modal-form input,
+        .modal-form select,
+        .modal-form textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            background: rgba(26, 43, 74, 0.5);
+            border: 1px solid rgba(107, 155, 212, 0.3);
+            border-radius: 50px;
+            font-size: 1rem;
+            color: var(--color-white);
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        .modal-form textarea {
+            border-radius: 20px;
+            min-height: 80px;
+            resize: vertical;
+        }
+        .modal-form input:focus,
+        .modal-form select:focus,
+        .modal-form textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(255, 165, 0, 0.1);
+        }
+        .modal-form input.error,
+        .modal-form select.error,
+        .modal-form textarea.error {
+            border-color: #c65c5c;
+        }
+        .modal-form .field-error {
+            font-size: 0.8rem;
+            color: #e88;
+            margin-top: 0.3rem;
+        }
+        .modal-form .form-btn {
+            margin-top: 0.5rem;
+            background: var(--color-accent);
+            padding: 1rem;
+            width: 100%;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .modal-form .form-btn:hover {
+            background: var(--color-accent-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 165, 0, 0.4);
+        }
+        .modal-success {
+            text-align: center;
+            padding: 1rem 0;
+            display: none;
+        }
+        .modal-success.is-visible {
+            display: block;
+        }
+        .modal-success i {
+            font-size: 3rem;
+            color: #6b9e5c;
+            margin-bottom: 1rem;
+        }
+        .modal-success p {
+            font-size: 1.2rem;
+            color: var(--color-white);
+        }
+        .modal-form-wrap {
+            display: block;
+        }
+        .modal-form-wrap.is-hidden {
+            display: none;
+        }
+
+        /* ===== COLOR SCHEME FROM LOGO (60-30-10) ===== */
+        :root {
+            /* 60% - Dark Blue (Primary) */
+            --color-primary-dark: #1a2b4a;
+            --color-primary: #2d4a6b;
+            --color-primary-light: #3d5a7b;
+            
+            /* 30% - Light Blue/White (Secondary) */
+            --color-secondary: #6b9bd4;
+            --color-secondary-light: #a8c5e8;
+            --color-white: #ffffff;
+            
+            /* 10% - Orange-Yellow (Accent) */
+            --color-accent: #ffa500;
+            --color-accent-gold: #ffb84d;
+            --color-accent-light: #ffd699;
+        }
+
+        /* ===== LANGUAGE TOGGLE ===== */
+        .lang-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 10002;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(26, 43, 74, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            border: 2px solid rgba(107, 155, 212, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .lang-toggle:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 165, 0, 0.2);
+        }
+        .lang-toggle-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            border: none;
+            color: var(--color-white);
+            cursor: pointer;
+            padding: 0.4rem 0.8rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .lang-toggle-btn.active {
+            background: var(--color-accent);
+            color: var(--color-primary-dark);
+        }
+        .lang-toggle-btn:hover:not(.active) {
+            background: rgba(107, 155, 212, 0.2);
+        }
+        .flag-icon {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+            object-fit: cover;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== SNOW EFFECT ===== */
+        #snowCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10001;
+            opacity: 0.8;
+        }
+
+        /* ===== RECOMMENDATION SECTION ===== */
+        .recommendation-section {
+            background: linear-gradient(135deg, var(--color-primary-dark) 0%, #1a1f2e 100%);
+            padding: 6rem 10%;
+            position: relative;
+            overflow: hidden;
+        }
+        .recommendation-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(107, 155, 212, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(255, 165, 0, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .recommendation-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        .recommendation-container h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 1rem;
+        }
+        .recommendation-subtitle {
+            font-size: 1.3rem;
+            color: var(--color-secondary-light);
+            margin-bottom: 4rem;
+            letter-spacing: 1px;
+        }
+        .recommendation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .recommendation-card {
+            background: rgba(26, 43, 74, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(107, 155, 212, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        .recommendation-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-accent);
+            box-shadow: 0 12px 40px rgba(255, 165, 0, 0.2);
+        }
+        .rec-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+        }
+        .rec-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .recommendation-card:hover .rec-image-wrapper img {
+            transform: scale(1.1);
+        }
+        .rec-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(26, 43, 74, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-white);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            border: 1px solid rgba(107, 155, 212, 0.3);
+        }
+        .rec-badge.chef-special {
+            background: rgba(255, 165, 0, 0.9);
+            color: var(--color-primary-dark);
+            border-color: var(--color-accent-gold);
+        }
+        .rec-badge i {
+            font-size: 0.9rem;
+        }
+        .rec-content {
+            padding: 1.8rem;
+        }
+        .rec-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--color-white);
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+        .rec-content p {
+            font-size: 1rem;
+            color: var(--color-secondary-light);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .rec-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .rec-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+        .rec-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            border: none;
+            color: var(--color-primary-dark);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .rec-btn i {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+        }
+        .rec-btn:hover {
+            background: var(--color-accent-gold);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 165, 0, 0.5);
+        }
+        .rec-btn:hover i {
+            transform: scale(1.2);
+        }
+        .rec-btn.liked {
+            background: #ff1744;
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(255, 23, 68, 0.5);
+            animation: heartBeat 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .rec-btn.liked:hover {
+            background: #ff4569;
+            box-shadow: 0 6px 25px rgba(255, 23, 68, 0.6);
+        }
+        .rec-btn.liked i {
+            color: #ffffff;
+            animation: heartPulse 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @keyframes heartBeat {
+            0% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.3);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            75% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        @keyframes heartPulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.4);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .rec-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+        .rec-btn.liked::before {
+            width: 100px;
+            height: 100px;
+            animation: ripple 0.6s ease-out;
+        }
+        @keyframes ripple {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+            100% {
+                width: 100px;
+                height: 100px;
+                opacity: 0;
+            }
+        }
+
+        /* ===== SMOOTHER ANIMATIONS ===== */
+        * {
+            scroll-behavior: smooth;
+        }
+        @keyframes smoothFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero-main {
+            animation: smoothFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .btn-primary, .btn-outline {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 165, 0, 0.4);
+        }
+        .btn-outline:hover {
+            transform: translateY(-2px);
+            background: rgba(107, 155, 212, 0.1);
+            border-color: var(--color-accent);
+        }
+        .service-item, .partner-card, .gallery-frame {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .recommendation-section {
+                padding: 5rem 8%;
+            }
+            .recommendation-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+        @media (max-width: 900px) { 
+            .partner-grid { grid-template-columns:repeat(2,1fr); }
+            .recommendation-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .lang-toggle {
+                top: 1rem;
+                right: 1rem;
+                padding: 0.4rem 0.8rem;
+            }
+            .lang-toggle-btn {
+                font-size: 0.85rem;
+                padding: 0.3rem 0.6rem;
+            }
+            .flag-icon {
+                width: 18px;
+                height: 13px;
+            }
+        }
+        @media (max-width: 600px) { 
+            .about-section { padding:4rem 6%; } 
+            .service-points { grid-template-columns:1fr; } 
+            .gallery-grid { grid-template-columns:1fr; } 
+            .partner-grid { grid-template-columns:1fr; } 
+            .hero-mini-info { display:none; }
+            .recommendation-section {
+                padding: 4rem 5%;
+            }
+            .recommendation-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .recommendation-container h2 {
+                font-size: 2rem;
+            }
+            .recommendation-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 3rem;
+            }
+            .lang-toggle {
+                top: 0.5rem;
+                right: 0.5rem;
+                padding: 0.3rem 0.6rem;
+            }
+            .lang-toggle-btn {
+                font-size: 0.75rem;
+                padding: 0.25rem 0.5rem;
+            }
+            .flag-icon {
+                width: 16px;
+                height: 12px;
+            }
+        }
+        @media (max-width: 480px) {
+            .rec-content {
+                padding: 1.5rem;
+            }
+            .rec-content h3 {
+                font-size: 1.4rem;
+            }
+            .rec-price {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cultural-texture"></div>
+    <div class="texture-layer2"></div>
+    
+    <!-- SNOW EFFECT CANVAS -->
+    <canvas id="snowCanvas"></canvas>
+
+    <!-- LANGUAGE TOGGLE -->
+    <div class="lang-toggle">
+        <button class="lang-toggle-btn active" id="langEn" data-lang="en">
+            <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag-icon">
+            <span>EN</span>
+        </button>
+        <button class="lang-toggle-btn" id="langCz" data-lang="cz">
+            <img src="https://flagcdn.com/w20/cz.png" alt="Čeština" class="flag-icon">
+            <span>CZ</span>
+        </button>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="sliding-bg"><div class="bg-slide bg-1"></div><div class="bg-slide bg-2"></div><div class="bg-slide bg-3"></div></div>
+        <div class="texture-overlay"></div><div class="linen-texture"></div>
+        <div class="hero-content">
+            <div class="hero-main">
+                <div class="hero-sup"><i class="fas fa-praying-hands"></i><span data-i18n="namaste">NAMASTE · DOBRÝ VEČER</span><i class="fas fa-mountain-sun"></i></div>
+                <div class="text-slider" id="textSlider"><div class="slide-text" id="slideTextContainer">
+                    <div class="slide-text-item" data-slide="0">
+                        <span class="slide-title" data-i18n="hero_title1">Everest Masala</span>
+                        <span class="slide-sub" data-i18n="hero_sub1">Authentic Nepali & Indian flavors</span>
+                    </div>
+                    <div class="slide-text-item" data-slide="1">
+                        <span class="slide-title"><span data-i18n="hero_title2">Taste of the </span><span class="accent-gold" data-i18n="himalayas">Himalayas</span></span>
+                        <span class="slide-sub" data-i18n="hero_sub2">Traditional recipes · native chefs</span>
+                    </div>
+                    <div class="slide-text-item" data-slide="2">
+                        <span class="slide-title" data-i18n="hero_title3">Opening 28 Feb 2026</span>
+                        <span class="slide-sub" data-i18n="hero_sub3">Countdown: 10 days · 6h · 18min · 26s</span>
+                    </div>
+                    <div class="slide-text-item" data-slide="3">
+                        <span class="slide-title" data-i18n="hero_title4">Lunch Buffet & Takeaway</span>
+                        <span class="slide-sub" data-i18n="hero_sub4">Fresh food · Cozy dining · Momos</span>
+                    </div>
+                </div></div>
+                <p class="hero-description" id="dynamicDescription"><i class="fas fa-star"></i> <span data-i18n="hero_desc">Chicken Masala · Lamb Kadai · Tandoori Momos · Nepali Thali</span></p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" id="heroBookNowBtn"><i class="fas fa-calendar-check"></i> <span data-i18n="book_now">Book Now</span></button>
+                    <button class="btn-outline" onclick="window.location.href='https://everestmasala.cz'"><i class="fas fa-utensils"></i> <span data-i18n="explore_menu">Explore Menu</span></button>
+                    <button class="btn-outline" onclick="window.location.href='https://everestmasala.cz'"><i class="fas fa-bolt"></i> <span data-i18n="order_wolt">Order via Wolt</span></button>
+                </div>
+            </div>
+        </div>
+        <div class="hero-mini-info"><i class="fas fa-location-dot"></i> Mírové nám. 107/31, Ústí nad Labem <span>|</span> <i class="fas fa-clock"></i> 11:00–23:00 <span>|</span> <i class="fas fa-phone-alt"></i> +420 773 135 945</div>
+    </section>
+
+    <!-- Book Now Modal -->
+    <div class="modal-backdrop" id="bookModal" aria-hidden="true">
+        <div class="modal-box">
+            <button type="button" class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+            <h3><i class="fas fa-calendar-check"></i> <span data-i18n="reserve_table">Reserve Your Table</span></h3>
+            <div class="modal-form-wrap" id="modalFormWrap">
+                <form class="modal-form" id="bookForm" novalidate>
+                    <div class="form-group">
+                        <label for="bookName"><span data-i18n="name">Name</span> <span style="color:var(--color-accent)">*</span></label>
+                        <input type="text" id="bookName" name="name" data-i18n-placeholder="name_placeholder" placeholder="Your full name" required>
+                        <span class="field-error" id="errName"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookEmail"><span data-i18n="email">Email</span> <span style="color:var(--color-accent)">*</span></label>
+                        <input type="email" id="bookEmail" name="email" data-i18n-placeholder="email_placeholder" placeholder="your@email.com" required>
+                        <span class="field-error" id="errEmail"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookPhone"><span data-i18n="phone">Phone</span> <span style="color:var(--color-accent)">*</span></label>
+                        <input type="tel" id="bookPhone" name="phone" data-i18n-placeholder="phone_placeholder" placeholder="+420 123 456 789" required>
+                        <span class="field-error" id="errPhone"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookDate"><span data-i18n="date">Date</span> <span style="color:var(--color-accent)">*</span></label>
+                        <input type="date" id="bookDate" name="date" required>
+                        <span class="field-error" id="errDate"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookTime"><span data-i18n="time">Time</span> <span style="color:var(--color-accent)">*</span></label>
+                        <input type="time" id="bookTime" name="time" required>
+                        <span class="field-error" id="errTime"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookGuests"><span data-i18n="guests">Number of Guests</span> <span style="color:var(--color-accent)">*</span></label>
+                        <select id="bookGuests" name="guests" required>
+                            <option value="" data-i18n="select">Select</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8+</option>
+                        </select>
+                        <span class="field-error" id="errGuests"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookRequests"><span data-i18n="special_requests">Special Requests</span> <span style="color:#888">(<span data-i18n="optional">optional</span>)</span></label>
+                        <textarea id="bookRequests" name="requests" data-i18n-placeholder="requests_placeholder" placeholder="Dietary needs, occasion, etc."></textarea>
+                    </div>
+                    <button type="submit" class="form-btn"><i class="fas fa-calendar-check"></i> <span data-i18n="confirm_booking">Confirm Booking</span></button>
+                </form>
+            </div>
+            <div class="modal-success" id="modalSuccess">
+                <i class="fas fa-check-circle"></i>
+                <p data-i18n="booking_success">Thank you! Your table reservation has been received. We'll confirm shortly.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT US – ORIGINAL COLLAGE LAYOUT (RESTORED) -->
+    <section class="about-section" data-aos="fade-up">
+        <div class="about-left">
+            <h2 class="curved-underline" data-i18n="about_us">About Us</h2>
+            <p class="about-desc" data-i18n="about_desc">Everest Masala is a celebration of Nepali and Indian heritage. Our native chefs prepare every dish with love, using traditional recipes passed down through generations. From the spicy tandoor to creamy curries and steamed momos — each plate tells the story of the Himalayas.</p>
+            <div class="service-points">
+                <div class="service-item"><i class="fas fa-buffet"></i><span data-i18n="lunch_buffet">Lunch Buffet</span></div>
+                <div class="service-item"><i class="fas fa-bag-shopping"></i><span data-i18n="takeaway">Takeaway</span></div>
+                <div class="service-item"><i class="fas fa-fire"></i><span data-i18n="tandoor_specialties">Tandoor Specialties</span></div>
+                <div class="service-item"><i class="fas fa-leaf"></i><span data-i18n="fresh_ingredients">Fresh Ingredients</span></div>
+                <div class="service-item"><i class="fas fa-mug-hot"></i><span data-i18n="cozy_dining">Cozy Dining</span></div>
+                <div class="service-item"><i class="fas fa-motorcycle"></i><span data-i18n="delivery_partners">Wolt & Foodora</span></div>
+            </div>
+        </div>
+        <div class="about-right">
+            <!-- ORIGINAL COLLAGE STRUCTURE: tall left + two stacked right + horizontal bottom -->
+            <div class="collage-grid">
+                <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=1887&auto=format&fit=crop" alt="interior" class="collage-img collage-item1" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?q=80&w=1887&auto=format&fit=crop" alt="spices" class="collage-img collage-item2" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=1887&auto=format&fit=crop" alt="momos" class="collage-img collage-item3" loading="lazy">
+            </div>
+            <!-- horizontal bottom image (exactly as before) -->
+            <img src="https://images.unsplash.com/photo-1585937421612-70a008356c36?q=80&w=1936&auto=format&fit=crop" alt="tandoori" class="horizontal-bottom-img" loading="lazy">
+        </div>
+    </section>
+
+    <!-- RECOMMENDATION SECTION -->
+    <section class="recommendation-section" data-aos="fade-up">
+        <div class="recommendation-container">
+            <h2 class="curved-underline" data-i18n="recommendations_title">Our Recommendations</h2>
+            <p class="recommendation-subtitle" data-i18n="recommendations_subtitle">Chef's Special Picks · Must-Try Dishes</p>
+            <div class="recommendation-grid">
+                <div class="recommendation-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="rec-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1585937421612-70a008356c36?q=80&w=1936&auto=format&fit=crop" alt="Chicken Masala" loading="lazy">
+                        <div class="rec-badge"><i class="fas fa-fire"></i> <span data-i18n="popular">Popular</span></div>
+                    </div>
+                    <div class="rec-content">
+                        <h3 data-i18n="chicken_masala">Chicken Masala</h3>
+                        <p data-i18n="chicken_masala_desc">Tender chicken in rich, aromatic curry sauce with traditional spices</p>
+                        <div class="rec-footer">
+                            <span class="rec-price">299 Kč</span>
+                            <button class="rec-btn" aria-label="Add to favorites"><i class="fas fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="recommendation-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="rec-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=1887&auto=format&fit=crop" alt="Nepali Momos" loading="lazy">
+                        <div class="rec-badge chef-special"><i class="fas fa-star"></i> <span data-i18n="chef_special">Chef's Special</span></div>
+                    </div>
+                    <div class="rec-content">
+                        <h3 data-i18n="nepali_momos">Nepali Momos</h3>
+                        <p data-i18n="nepali_momos_desc">Steamed dumplings filled with spiced meat, served with tangy chutney</p>
+                        <div class="rec-footer">
+                            <span class="rec-price">189 Kč</span>
+                            <button class="rec-btn" aria-label="Add to favorites"><i class="fas fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="recommendation-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="rec-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?q=80&w=1887&auto=format&fit=crop" alt="Lamb Kadai" loading="lazy">
+                        <div class="rec-badge"><i class="fas fa-fire"></i> <span data-i18n="popular">Popular</span></div>
+                    </div>
+                    <div class="rec-content">
+                        <h3 data-i18n="lamb_kadai">Lamb Kadai</h3>
+                        <p data-i18n="lamb_kadai_desc">Succulent lamb cooked in a wok with bell peppers and aromatic spices</p>
+                        <div class="rec-footer">
+                            <span class="rec-price">349 Kč</span>
+                            <button class="rec-btn" aria-label="Add to favorites"><i class="fas fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="recommendation-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="rec-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=1887&auto=format&fit=crop" alt="Nepali Thali" loading="lazy">
+                        <div class="rec-badge chef-special"><i class="fas fa-star"></i> <span data-i18n="chef_special">Chef's Special</span></div>
+                    </div>
+                    <div class="rec-content">
+                        <h3 data-i18n="nepali_thali">Nepali Thali</h3>
+                        <p data-i18n="nepali_thali_desc">Complete meal with dal, rice, vegetables, pickles, and traditional sides</p>
+                        <div class="rec-footer">
+                            <span class="rec-price">399 Kč</span>
+                            <button class="rec-btn" aria-label="Add to favorites"><i class="fas fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="recommendation-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="rec-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=1887&auto=format&fit=crop" alt="Nepali Thali" loading="lazy">
+                        <div class="rec-badge chef-special"><i class="fas fa-star"></i> <span data-i18n="chef_special">Chef's Special</span></div>
+                    </div>
+                    <div class="rec-content">
+                        <h3 data-i18n="nepali_thali">Nepali Thali</h3>
+                        <p data-i18n="nepali_thali_desc">Complete meal with dal, rice, vegetables, pickles, and traditional sides</p>
+                        <div class="rec-footer">
+                            <span class="rec-price">399 Kč</span>
+                            <button class="rec-btn" aria-label="Add to favorites"><i class="fas fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="recommendation-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="rec-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=1887&auto=format&fit=crop" alt="Nepali Thali" loading="lazy">
+                        <div class="rec-badge chef-special"><i class="fas fa-star"></i> <span data-i18n="chef_special">Chef's Special</span></div>
+                    </div>
+                    <div class="rec-content">
+                        <h3 data-i18n="nepali_thali">Nepali Thali</h3>
+                        <p data-i18n="nepali_thali_desc">Complete meal with dal, rice, vegetables, pickles, and traditional sides</p>
+                        <div class="rec-footer">
+                            <span class="rec-price">399 Kč</span>
+                            <button class="rec-btn" aria-label="Add to favorites"><i class="fas fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY multi‑frame auto slider -->
+    <section class="gallery-section" data-aos="fade-up">
+        <h2 class="curved-underline" style="font-size:3rem; color:var(--color-white);" data-i18n="visual_stories">Visual Stories</h2>
+        <div class="gallery-grid">
+            <div class="gallery-frame"><div class="frame-slider"><img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=1887&auto=format&fit=crop" class="frame-img active" data-caption="Royal Thali · 5 curries"><img src="https://images.unsplash.com/photo-1585937421612-70a008356c36?q=80&w=1936&auto=format&fit=crop" class="frame-img" data-caption="Tandoori Dreams"><img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=1887&auto=format&fit=crop" class="frame-img" data-caption="Momos & Chutney"><div class="frame-caption">Royal Thali</div></div></div>
+            <div class="gallery-frame"><div class="frame-slider"><img src="https://images.unsplash.com/photo-1585937421612-70a008356c36?q=80&w=1936&auto=format&fit=crop" class="frame-img active" data-caption="Tandoori Dreams"><img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=1887&auto=format&fit=crop" class="frame-img" data-caption="Momos & Chutney"><img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?q=80&w=1887&auto=format&fit=crop" class="frame-img" data-caption="Himalayan Naan"><div class="frame-caption">Tandoori</div></div></div>
+            <div class="gallery-frame"><div class="frame-slider"><img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=1887&auto=format&fit=crop" class="frame-img active" data-caption="Momos & Chutney"><img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?q=80&w=1887&auto=format&fit=crop" class="frame-img" data-caption="Himalayan Naan"><img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=1887&auto=format&fit=crop" class="frame-img" data-caption="Royal Thali"><div class="frame-caption">Momos</div></div></div>
+            <div class="gallery-frame"><div class="frame-slider"><img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?q=80&w=1887&auto=format&fit=crop" class="frame-img active" data-caption="Himalayan Naan"><img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=1887&auto=format&fit=crop" class="frame-img" data-caption="Royal Thali"><img src="https://images.unsplash.com/photo-1585937421612-70a008356c36?q=80&w=1936&auto=format&fit=crop" class="frame-img" data-caption="Tandoori Dreams"><div class="frame-caption">Naan</div></div></div>
+        </div>
+    </section>
+
+    <!-- REVIEW, RESERVE, PARTNER (unchanged) -->
+    <section class="review-section" data-aos="fade-up">
+        <h2 class="curved-underline" style="font-size:3rem; color:var(--color-white);" data-i18n="guest_voices">Guest Voices</h2>
+        <div class="review-carousel" id="reviewCarousel"><div class="review-track" id="reviewTrack">
+            <div class="review-slide"><div class="review-text">"Phenomenal Indian and Nepalese cuisine! The Chicken Masala was amazing."</div><div class="review-author">— Ajit Sharma</div></div>
+            <div class="review-slide"><div class="review-text">"Best lamb kadai in town. Cozy atmosphere and friendly staff."</div><div class="review-author">— Petra Nová</div></div>
+            <div class="review-slide"><div class="review-text">"I felt like I was in Kathmandu. Authentic momos and thali!"</div><div class="review-author">— David Černý</div></div>
+        </div></div>
+    </section>
+
+    <section class="reserve-section" data-aos="fade-up">
+        <div class="reserve-info"><h2 class="curved-underline" data-i18n="visit_us">Visit Us</h2>
+            <div class="info-item"><i class="fas fa-location-dot"></i><p>Mírové nám. 107/31, Ústí nad Labem</p></div>
+            <div class="info-item"><i class="fas fa-clock"></i><p>Mon-Thu 11:00–22:00, Fri-Sat 11:00–23:00, Sun 10:00–21:00</p></div>
+            <div class="info-item"><i class="fas fa-phone-alt"></i><p>+420 773 135 945</p></div>
+            <div class="info-item"><i class="fas fa-envelope"></i><p>reservation@everestmasala.cz</p></div>
+            <div class="map-placeholder"></div>
+        </div>
+        <div class="reserve-form"><h3 style="font-size:2.4rem; color:var(--color-white); margin-bottom:2rem;" data-i18n="reserve_table">Reserve a Table</h3>
+            <form><div class="form-group"><input type="text" placeholder="Your Name" required></div><div class="form-group"><input type="email" placeholder="Email Address" required></div><div class="form-group"><input type="text" placeholder="Phone"></div><div class="form-group"><select><option>2 persons</option><option>4 persons</option><option>6 persons</option></select></div><div class="form-group"><input type="date" value="2026-03-01"></div><div class="form-group"><textarea rows="3" placeholder="Special requests..."></textarea></div><button class="form-btn" type="submit"><i class="fas fa-calendar-check"></i> Book Now</button></form>
+        </div>
+    </section>
+
+    <section class="partner-section" data-aos="fade-up">
+        <h2 class="curved-underline" style="font-size:3rem; color:var(--color-white);" data-i18n="delivery_partners_title">Delivery Partners</h2>
+        <div class="partner-grid">
+            <div class="partner-card"><img src="https://logos-world.net/wp-content/uploads/2021/03/Wolt-Logo.png" alt="Wolt" class="partner-logo" onerror="this.src='https://via.placeholder.com/100x100?text=Wolt'"><h3>Wolt</h3><p>Fast delivery within 35 mins</p><a class="order-btn">Order Now</a></div>
+            <div class="partner-card"><img src="https://logos-world.net/wp-content/uploads/2021/08/Foodora-Logo.png" alt="Foodora" class="partner-logo" onerror="this.src='https://via.placeholder.com/100x100?text=Foodora'"><h3>Foodora</h3><p>Local favorite meals delivered</p><a class="order-btn">Order Now</a></div>
+            <div class="partner-card"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Bolt_Food_logo.png" alt="Bolt Food" class="partner-logo" onerror="this.src='https://via.placeholder.com/100x100?text=Bolt'"><h3>Bolt Food</h3><p>Best prices and offers</p><a class="order-btn">Order Now</a></div>
+            <div class="partner-card"><img src="https://cdn-icons-png.flaticon.com/512/1694/1694708.png" alt="Takeaway" class="partner-logo" onerror="this.src='https://via.placeholder.com/100x100?text=Takeaway'"><h3>Takeaway</h3><p>Ready for pickup in 15 mins</p><a class="order-btn">Call & Collect</a></div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: false, offset: 80, duration: 800 });
+
+        // ===== LANGUAGE TOGGLE =====
+        const translations = {
+            en: {
+                namaste: "NAMASTE · DOBRÝ VEČER",
+                hero_title1: "Everest Masala",
+                hero_sub1: "Authentic Nepali & Indian flavors",
+                hero_title2: "Taste of the ",
+                himalayas: "Himalayas",
+                hero_sub2: "Traditional recipes · native chefs",
+                hero_title3: "Opening 28 Feb 2026",
+                hero_sub3: "Countdown: 10 days · 6h · 18min · 26s",
+                hero_title4: "Lunch Buffet & Takeaway",
+                hero_sub4: "Fresh food · Cozy dining · Momos",
+                hero_desc: "Chicken Masala · Lamb Kadai · Tandoori Momos · Nepali Thali",
+                book_now: "Book Now",
+                explore_menu: "Explore Menu",
+                order_wolt: "Order via Wolt",
+                reserve_table: "Reserve Your Table",
+                name: "Name",
+                email: "Email",
+                phone: "Phone",
+                date: "Date",
+                time: "Time",
+                guests: "Number of Guests",
+                special_requests: "Special Requests",
+                optional: "optional",
+                confirm_booking: "Confirm Booking",
+                booking_success: "Thank you! Your table reservation has been received. We'll confirm shortly.",
+                name_placeholder: "Your full name",
+                email_placeholder: "your@email.com",
+                phone_placeholder: "+420 123 456 789",
+                requests_placeholder: "Dietary needs, occasion, etc.",
+                select: "Select",
+                about_us: "About Us",
+                about_desc: "Everest Masala is a celebration of Nepali and Indian heritage. Our native chefs prepare every dish with love, using traditional recipes passed down through generations. From the spicy tandoor to creamy curries and steamed momos — each plate tells the story of the Himalayas.",
+                lunch_buffet: "Lunch Buffet",
+                takeaway: "Takeaway",
+                tandoor_specialties: "Tandoor Specialties",
+                fresh_ingredients: "Fresh Ingredients",
+                cozy_dining: "Cozy Dining",
+                delivery_partners: "Wolt & Foodora",
+                visual_stories: "Visual Stories",
+                guest_voices: "Guest Voices",
+                visit_us: "Visit Us",
+                delivery_partners_title: "Delivery Partners",
+                recommendations_title: "Our Recommendations",
+                recommendations_subtitle: "Chef's Special Picks · Must-Try Dishes",
+                popular: "Popular",
+                chef_special: "Chef's Special",
+                chicken_masala: "Chicken Masala",
+                chicken_masala_desc: "Tender chicken in rich, aromatic curry sauce with traditional spices",
+                nepali_momos: "Nepali Momos",
+                nepali_momos_desc: "Steamed dumplings filled with spiced meat, served with tangy chutney",
+                lamb_kadai: "Lamb Kadai",
+                lamb_kadai_desc: "Succulent lamb cooked in a wok with bell peppers and aromatic spices",
+                nepali_thali: "Nepali Thali",
+                nepali_thali_desc: "Complete meal with dal, rice, vegetables, pickles, and traditional sides"
+            },
+            cz: {
+                namaste: "NAMASTE · DOBRÝ VEČER",
+                hero_title1: "Everest Masala",
+                hero_sub1: "Autentické nepálské a indické chutě",
+                hero_title2: "Chuť ",
+                himalayas: "Himalájí",
+                hero_sub2: "Tradiční recepty · rodilí kuchaři",
+                hero_title3: "Otevření 28. února 2026",
+                hero_sub3: "Odpočítávání: 10 dní · 6h · 18min · 26s",
+                hero_title4: "Obědové menu a jídlo s sebou",
+                hero_sub4: "Čerstvé jídlo · útulné posezení · Momos",
+                hero_desc: "Kuřecí Masala · Jehněčí Kadai · Tandoori Momos · Nepálské Thali",
+                book_now: "Rezervovat",
+                explore_menu: "Prohlédnout Menu",
+                order_wolt: "Objednat přes Wolt",
+                reserve_table: "Rezervujte si stůl",
+                name: "Jméno",
+                email: "Email",
+                phone: "Telefon",
+                date: "Datum",
+                time: "Čas",
+                guests: "Počet hostů",
+                special_requests: "Speciální požadavky",
+                optional: "volitelné",
+                confirm_booking: "Potvrdit rezervaci",
+                booking_success: "Děkujeme! Vaše rezervace stolu byla přijata. Brzy potvrdíme.",
+                name_placeholder: "Vaše celé jméno",
+                email_placeholder: "vas@email.cz",
+                phone_placeholder: "+420 123 456 789",
+                requests_placeholder: "Dietní potřeby, příležitost atd.",
+                select: "Vybrat",
+                about_us: "O nás",
+                about_desc: "Everest Masala je oslava nepálského a indického dědictví. Naši rodilí kuchaři připravují každé jídlo s láskou, používají tradiční recepty předávané z generace na generaci. Od pikantního tandooru po krémové kari a dušené momos — každý talíř vypráví příběh Himalájí.",
+                lunch_buffet: "Obědové menu",
+                takeaway: "Jídlo s sebou",
+                tandoor_specialties: "Tandoor speciality",
+                fresh_ingredients: "Čerstvé suroviny",
+                cozy_dining: "Útulné posezení",
+                delivery_partners: "Wolt & Foodora",
+                visual_stories: "Vizuální příběhy",
+                guest_voices: "Hlasy hostů",
+                visit_us: "Navštivte nás",
+                delivery_partners_title: "Partneři pro doručení",
+                recommendations_title: "Naše Doporučení",
+                recommendations_subtitle: "Šéfkuchařovy Speciály · Musíte Vyzkoušet",
+                popular: "Oblíbené",
+                chef_special: "Šéfkuchařův Speciál",
+                chicken_masala: "Kuřecí Masala",
+                chicken_masala_desc: "Jemné kuřecí maso v bohaté, aromatické kari omáčce s tradičními kořením",
+                nepali_momos: "Nepálské Momos",
+                nepali_momos_desc: "Dušené knedlíčky plněné kořeněným masem, podávané s pikantní chutney",
+                lamb_kadai: "Jehněčí Kadai",
+                lamb_kadai_desc: "Šťavnaté jehněčí maso vařené na woku s paprikami a aromatickým kořením",
+                nepali_thali: "Nepálské Thali",
+                nepali_thali_desc: "Kompletní jídlo s dal, rýží, zeleninou, nakládanými okurkami a tradičními přílohami"
+            }
+        };
+
+        let currentLang = localStorage.getItem('lang') || 'en';
+        document.documentElement.setAttribute('data-lang', currentLang);
+
+        function updateLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            document.documentElement.setAttribute('data-lang', lang);
+            
+            // Update toggle buttons
+            document.getElementById('langEn').classList.toggle('active', lang === 'en');
+            document.getElementById('langCz').classList.toggle('active', lang === 'cz');
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    // Skip if it's inside an accent-gold span (handled separately)
+                    if (el.closest('.accent-gold')) {
+                        return;
+                    }
+                    // Handle special case for hero_title2 which has accent-gold inside
+                    if (key === 'hero_title2' && el.parentElement.querySelector('.accent-gold')) {
+                        const accentEl = el.parentElement.querySelector('.accent-gold');
+                        const accentKey = accentEl.getAttribute('data-i18n');
+                        if (accentKey && translations[lang][accentKey]) {
+                            accentEl.textContent = translations[lang][accentKey];
+                        }
+                        el.textContent = translations[lang][key];
+                    } else {
+                        el.textContent = translations[lang][key];
+                    }
+                }
+            });
+            
+            // Update placeholder attributes
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    el.setAttribute('placeholder', translations[lang][key]);
+                }
+            });
+            
+            // Update hero slider descriptions
+            updateHeroDescriptions(lang);
+            
+            // Update hero slider titles and subtitles
+            updateHeroSlides(lang);
+            
+            // Refresh slider after language update
+            setTimeout(() => {
+                if (typeof initSlider === 'function') {
+                    initSlider();
+                }
+            }, 100);
+        }
+        
+        function updateHeroSlides(lang) {
+            const slides = document.querySelectorAll('.slide-text-item');
+            slides.forEach((slide, index) => {
+                const titleEl = slide.querySelector('.slide-title');
+                const subEl = slide.querySelector('.slide-sub');
+                
+                if (titleEl && subEl) {
+                    const titleKey = `hero_title${index + 1}`;
+                    const subKey = `hero_sub${index + 1}`;
+                    
+                    // Special handling for slide 1 (index 1) which has accent-gold
+                    if (index === 1) {
+                        const titleText = translations[lang][titleKey] || '';
+                        const himalayasText = translations[lang]['himalayas'] || '';
+                        if (titleEl.querySelector('.accent-gold')) {
+                            titleEl.innerHTML = titleText + '<span class="accent-gold">' + himalayasText + '</span>';
+                        }
+                    } else {
+                        if (translations[lang][titleKey]) {
+                            titleEl.textContent = translations[lang][titleKey];
+                        }
+                    }
+                    
+                    if (translations[lang][subKey]) {
+                        subEl.textContent = translations[lang][subKey];
+                    }
+                }
+            });
+        }
+        
+        function updateHeroDescriptions(lang) {
+            const descs = {
+                en: [
+                    '<i class="fas fa-star"></i> Chicken Masala · Lamb Kadai · Tandoori Momos · Nepali Thali',
+                    '<i class="fas fa-mountain"></i> Momos · Tandoori Mix · Lamb Kadai · Fresh naan',
+                    '<i class="fas fa-hourglass-half"></i> Opening 28 Feb · 10 days 6h 18m 26s',
+                    '<i class="fas fa-leaf"></i> Lunch buffet · Takeaway · Cozy dining'
+                ],
+                cz: [
+                    '<i class="fas fa-star"></i> Kuřecí Masala · Jehněčí Kadai · Tandoori Momos · Nepálské Thali',
+                    '<i class="fas fa-mountain"></i> Momos · Tandoori Mix · Jehněčí Kadai · Čerstvý naan',
+                    '<i class="fas fa-hourglass-half"></i> Otevření 28. února · 10 dní 6h 18m 26s',
+                    '<i class="fas fa-leaf"></i> Obědové menu · Jídlo s sebou · Útulné posezení'
+                ]
+            };
+            if (descs[lang]) {
+                window.heroDescriptions = descs[lang];
+            }
+        }
+
+        // Initialize language
+        updateLanguage(currentLang);
+        updateHeroDescriptions(currentLang);
+        updateHeroSlides(currentLang);
+        
+        // Language toggle event listeners
+        document.getElementById('langEn').addEventListener('click', () => {
+            updateLanguage('en');
+        });
+        document.getElementById('langCz').addEventListener('click', () => {
+            updateLanguage('cz');
+        });
+
+        // Book Now modal
+        const bookModal = document.getElementById('bookModal');
+        const heroBookBtn = document.getElementById('heroBookNowBtn');
+        const modalClose = document.getElementById('modalClose');
+        const bookForm = document.getElementById('bookForm');
+        const modalFormWrap = document.getElementById('modalFormWrap');
+        const modalSuccess = document.getElementById('modalSuccess');
+
+        function openBookModal() {
+            if (!bookModal) return;
+            bookModal.classList.add('is-open');
+            bookModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            modalFormWrap.classList.remove('is-hidden');
+            modalSuccess.classList.remove('is-visible');
+            bookForm.reset();
+            clearErrors();
+        }
+        function closeBookModal() {
+            if (!bookModal) return;
+            bookModal.classList.remove('is-open');
+            bookModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+        function clearErrors() {
+            document.querySelectorAll('.modal-form input, .modal-form select, .modal-form textarea').forEach(el => el.classList.remove('error'));
+            document.querySelectorAll('.modal-form .field-error').forEach(el => { el.textContent = ''; });
+        }
+        function showError(id, message) {
+            const el = document.getElementById(id);
+            const errEl = document.getElementById('err' + id.replace('book', ''));
+            if (el) el.classList.add('error');
+            if (errEl) errEl.textContent = message;
+        }
+
+        if (heroBookBtn) heroBookBtn.addEventListener('click', openBookModal);
+        if (modalClose) modalClose.addEventListener('click', closeBookModal);
+        bookModal.addEventListener('click', function(e) { if (e.target === bookModal) closeBookModal(); });
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && bookModal && bookModal.classList.contains('is-open')) closeBookModal(); });
+
+        if (bookForm) {
+            bookForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                clearErrors();
+                let valid = true;
+                const name = document.getElementById('bookName');
+                const email = document.getElementById('bookEmail');
+                const phone = document.getElementById('bookPhone');
+                const date = document.getElementById('bookDate');
+                const time = document.getElementById('bookTime');
+                const guests = document.getElementById('bookGuests');
+
+                const errorMessages = {
+                    en: {
+                        name_required: 'Please enter your name',
+                        email_required: 'Please enter your email',
+                        email_invalid: 'Please enter a valid email',
+                        phone_required: 'Please enter your phone number',
+                        date_required: 'Please select a date',
+                        time_required: 'Please select a time',
+                        guests_required: 'Please select number of guests'
+                    },
+                    cz: {
+                        name_required: 'Prosím zadejte své jméno',
+                        email_required: 'Prosím zadejte svůj email',
+                        email_invalid: 'Prosím zadejte platný email',
+                        phone_required: 'Prosím zadejte své telefonní číslo',
+                        date_required: 'Prosím vyberte datum',
+                        time_required: 'Prosím vyberte čas',
+                        guests_required: 'Prosím vyberte počet hostů'
+                    }
+                };
+                const errors = errorMessages[currentLang] || errorMessages.en;
+                
+                if (!name.value.trim()) { showError('bookName', errors.name_required); valid = false; }
+                if (!email.value.trim()) { showError('bookEmail', errors.email_required); valid = false; }
+                else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { showError('bookEmail', errors.email_invalid); valid = false; }
+                if (!phone.value.trim()) { showError('bookPhone', errors.phone_required); valid = false; }
+                if (!date.value) { showError('bookDate', errors.date_required); valid = false; }
+                if (!time.value) { showError('bookTime', errors.time_required); valid = false; }
+                if (!guests.value) { showError('bookGuests', errors.guests_required); valid = false; }
+
+                if (!valid) return;
+
+                modalFormWrap.classList.add('is-hidden');
+                modalSuccess.classList.add('is-visible');
+                setTimeout(closeBookModal, 2200);
+            });
+        }
+
+        // Set min date to today for date input
+        const dateInput = document.getElementById('bookDate');
+        if (dateInput) {
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+        }
+        // Hero slider
+        const slideContainer = document.getElementById('slideTextContainer');
+        let items = document.querySelectorAll('.slide-text-item');
+        let currentIndex = 0, itemHeight = 120;
+        let slideInterval;
+        
+        function getItemHeight() { 
+            if(items.length>0){ 
+                let t=items[0].getBoundingClientRect().height; 
+                if(t>20) itemHeight=t; 
+            } 
+            return itemHeight; 
+        }
+        
+        function slideToIndex(i) { 
+            if(slideContainer) {
+                slideContainer.style.transform = `translateY(-${i * getItemHeight()}px)`;
+                slideContainer.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            }
+        }
+        
+        function nextSlide() { 
+            if(!items.length) return; 
+            currentIndex = (currentIndex+1)%items.length; 
+            slideToIndex(currentIndex);
+            
+            const d=document.getElementById('dynamicDescription'); 
+            if(d){ 
+                const p = window.heroDescriptions || [
+                    '<i class="fas fa-star"></i> Chicken Masala · Lamb Kadai · Tandoori Momos · Nepali Thali',
+                    '<i class="fas fa-mountain"></i> Momos · Tandoori Mix · Lamb Kadai · Fresh naan',
+                    '<i class="fas fa-hourglass-half"></i> Opening 28 Feb · 10 days 6h 18m 26s',
+                    '<i class="fas fa-leaf"></i> Lunch buffet · Takeaway · Cozy dining'
+                ];
+                d.style.opacity = '0';
+                setTimeout(() => {
+                    d.innerHTML = p[currentIndex] || p[0];
+                    d.style.opacity = '1';
+                }, 200);
+            } 
+        }
+        
+        function initSlider() {
+            items = document.querySelectorAll('.slide-text-item');
+            getItemHeight();
+            slideToIndex(0);
+            if (slideInterval) clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+        
+        window.addEventListener('load', initSlider);
+        window.addEventListener('resize', ()=>{ 
+            getItemHeight();
+            slideToIndex(currentIndex); 
+        });
+        
+
+        // Review auto slide
+        const track = document.getElementById('reviewTrack');
+        if(track) { let slides = document.querySelectorAll('.review-slide'); let i = 0; setInterval(() => { i = (i+1)%slides.length; track.style.transform = `translateX(-${i*100}%)`; }, 5000); }
+
+        // Gallery frame rotator
+        const frames = document.querySelectorAll('.gallery-frame');
+        frames.forEach((frame) => {
+            const images = frame.querySelectorAll('.frame-img');
+            const captionDiv = frame.querySelector('.frame-caption');
+            if (!images.length) return;
+            let active = 0;
+            setInterval(() => {
+                images[active].classList.remove('active');
+                active = (active + 1) % images.length;
+                images[active].classList.add('active');
+                if (captionDiv) captionDiv.innerText = images[active].getAttribute('data-caption') || 'Everest';
+            }, 3000);
+        });
+
+        // ===== RECOMMENDATION CARD HEART BUTTONS =====
+        document.querySelectorAll('.rec-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Toggle liked state
+                this.classList.toggle('liked');
+                
+                // Save to localStorage for persistence
+                const card = this.closest('.recommendation-card');
+                const cardTitle = card ? card.querySelector('h3')?.textContent : '';
+                if (cardTitle) {
+                    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+                    if (this.classList.contains('liked')) {
+                        if (!favorites.includes(cardTitle)) {
+                            favorites.push(cardTitle);
+                        }
+                    } else {
+                        const index = favorites.indexOf(cardTitle);
+                        if (index > -1) {
+                            favorites.splice(index, 1);
+                        }
+                    }
+                    localStorage.setItem('favorites', JSON.stringify(favorites));
+                }
+            });
+        });
+        
+        // Restore liked state from localStorage on page load
+        window.addEventListener('load', () => {
+            const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+            document.querySelectorAll('.recommendation-card').forEach(card => {
+                const cardTitle = card.querySelector('h3')?.textContent;
+                const btn = card.querySelector('.rec-btn');
+                if (cardTitle && btn && favorites.includes(cardTitle)) {
+                    btn.classList.add('liked');
+                }
+            });
+        });
+
+        // ===== SNOW EFFECT =====
+        (function() {
+            const canvas = document.getElementById('snowCanvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            let animationId;
+            const snowflakes = [];
+            const maxFlakes = 100;
+            
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            
+            function createSnowflake() {
+                return {
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 3 + 1,
+                    speed: Math.random() * 2 + 0.5,
+                    opacity: Math.random() * 0.5 + 0.3,
+                    wind: Math.random() * 0.5 - 0.25
+                };
+            }
+            
+            function initSnow() {
+                resizeCanvas();
+                snowflakes.length = 0;
+                for (let i = 0; i < maxFlakes; i++) {
+                    snowflakes.push(createSnowflake());
+                }
+            }
+            
+            function drawSnow() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                
+                snowflakes.forEach(flake => {
+                    ctx.beginPath();
+                    ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+                    ctx.globalAlpha = flake.opacity;
+                    ctx.fill();
+                    ctx.globalAlpha = 1;
+                });
+            }
+            
+            function updateSnow() {
+                snowflakes.forEach(flake => {
+                    flake.y += flake.speed;
+                    flake.x += flake.wind;
+                    
+                    if (flake.y > canvas.height) {
+                        flake.y = -10;
+                        flake.x = Math.random() * canvas.width;
+                    }
+                    
+                    if (flake.x > canvas.width) {
+                        flake.x = 0;
+                    } else if (flake.x < 0) {
+                        flake.x = canvas.width;
+                    }
+                });
+            }
+            
+            function animate() {
+                drawSnow();
+                updateSnow();
+                animationId = requestAnimationFrame(animate);
+            }
+            
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+            });
+            
+            initSnow();
+            animate();
+        })();
+    </script>
+</body>
+</html>
+</html>
