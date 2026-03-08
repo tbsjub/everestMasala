@@ -8,6 +8,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [lang, setLang] = useState("cz"); // For language toggle (if needed)
+  const [isLangOpen, setIsLangOpen] = useState(false);
 
   //loading the saved language from localStorage on component mount
   useEffect(() => {
@@ -108,21 +109,24 @@ const currentPath = location.pathname;
             </Link>
           </div>
 
-          <div className="lang-toggle">
-        <button
-          className={`lang-toggle-btn ${lang === "en" ? "active" : ""}`}
-          onClick={() => setLang("en")}
-        >
-          🇬🇧 EN
-        </button>
+         <div className="lang-dropdown">
+          <button
+            className="lang-selected"
+            onClick={() => setIsLangOpen(!isLangOpen)}
+          >
+            {lang === "en" ? "🇬🇧 EN" : "🇨🇿 CZ"}
+          </button>
 
-        <button
-          className={`lang-toggle-btn ${lang === "cz" ? "active" : ""}`}
-          onClick={() => setLang("cz")}
-        >
-          🇨🇿 CZ
-        </button>
-      </div>
+          <div className={`lang-menu ${isLangOpen ? "open" : ""}`}>
+            <button onClick={() => { setLang("en"); setIsLangOpen(false); }}>
+              🇬🇧 English
+            </button>
+
+            <button onClick={() => { setLang("cz"); setIsLangOpen(false); }}>
+              🇨🇿 Čeština
+            </button>
+          </div>
+        </div>
 
           {/* Hamburger */}
           <div

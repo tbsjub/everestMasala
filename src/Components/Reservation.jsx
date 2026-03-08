@@ -18,7 +18,7 @@ export default function Reservation() {
 
         <div className="info-item">
           <FaMapMarkedAlt />
-          <p>Mírové nám. 107/31, Ústí nad Labem</p>
+          <p>Staroměstské Náměstí Mladá Boleslav</p>
         </div>
 
         <div className="info-item">
@@ -28,12 +28,12 @@ export default function Reservation() {
 
         <div className="info-item">
           <FaPhoneAlt />
-          <p>+420 773 135 945</p>
+          <p>+420 725 948 722</p>
         </div>
 
         <div className="info-item">
           <FaEnvelope />
-          <p>reservation@everestmasala.cz</p>
+          <p>everestmasalacz@gmail.com</p>
         </div>
 
         {/* GOOGLE MAP */}

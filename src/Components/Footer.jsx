@@ -15,7 +15,7 @@ export default function Footer() {
           <h3>Everest Masala</h3>
 
           <div className="footer-contact">
-            <span><FaMapMarkerAlt /> staroměstské náměstí mladá boleslav</span>
+            <span><FaMapMarkerAlt />Staroměstské Náměstí Mladá Boleslav</span>
             <span><FaPhoneAlt /> +420 725 948 722</span>
           </div>
         </div>

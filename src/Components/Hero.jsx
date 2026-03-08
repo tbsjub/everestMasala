@@ -4,6 +4,8 @@ import everest01 from "../assets/images/everest-01.webp";
 import everest02 from "../assets/images/everest-02.webp";
 import everest03 from "../assets/images/everest-03.webp";
 
+import { useLocation, Link } from "react-router-dom"; // only if using React Router
+
 export default function Hero() {
   const [slideIndex, setSlideIndex] = useState(0);
 
@@ -73,14 +75,9 @@ export default function Hero() {
               <i className="fas fa-calendar-check"></i> Book Now
             </button>
 
-            <button
-              className="btn-outline"
-              onClick={() =>
-                window.location.href = "https://everestmasala.cz/menu"
-              }
-            >
+            <Link to="/menu" className="btn-outline">
               <i className="fas fa-utensils"></i> Explore Menu
-            </button>
+            </Link>
 
             <button
               className="btn-outline"
