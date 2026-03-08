@@ -6,6 +6,7 @@
   background: #0c0f15;
   padding-top: 5rem;
   border-top: 1px solid rgba(212,160,23,0.2);
+  padding: 35px 20px;
 }
 
 /* GRID */
@@ -35,6 +36,14 @@
   object-fit: cover;
 }
 /* COLUMN */
+
+.logo-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
 .footer-col h3 {
   font-family: "Playfair Display", serif;
@@ -118,8 +127,8 @@
 /* BOTTOM */
 
 .footer-bottom {
-  margin-top: 3rem;
-  padding: 1.5rem 10%;
+  margin-top: 1rem;
+  padding: 1rem 10%;
   text-align: center;
   border-top: 1px solid rgba(255,255,255,0.05);
 }

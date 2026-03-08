@@ -51,14 +51,14 @@ const currentPath = location.pathname;
         <div className="top-bar">
           <div className="top-left">
             <span>
-              <i className="fas fa-phone"></i> +420 773 135 945
+              <i className="fas fa-phone"></i> +420 725 948 722
             </span>
             <span style={{ marginLeft: "20px" }}>
-              <i className="fas fa-envelope"></i> info@everestusti.cz
+              <i className="fas fa-envelope"></i> everestmasalacz@gmail.com
             </span>
           </div>
           <div className="top-right">
-            <a href="#"><i className="fab fa-facebook-f"></i></a>
+            <a href="https://www.facebook.com/people/Everest-masala/61583347953938/"><i className="fab fa-facebook-f"></i></a>
             <a href="#"><i className="fab fa-instagram"></i></a>
           </div>
         </div>

@@ -24,8 +24,8 @@ export default function Gallery() {
     },
     {
       imgs: [
-        "https://everestmasala.cz/images/everest-11.webp",
-        "https://everestmasala.cz/images/everest-51.webp",
+        everest11,
+        everest51,
       ],
       caption: "Mix",
     },

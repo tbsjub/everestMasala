@@ -92,13 +92,13 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="hero-mini-info">
+      {/* <div className="hero-mini-info">
         <i className="fas fa-location-dot"></i> Mírové nám. 107/31, Ústí nad Labem
         <span> | </span>
         <i className="fas fa-clock"></i> 11:00–23:00
         <span> | </span>
         <i className="fas fa-phone-alt"></i> +420 773 135 945
-      </div>
+      </div> */}
     </section>
   );
 }

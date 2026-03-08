@@ -231,7 +231,7 @@
 
 /* ================= MINI INFO BAR ================= */
 
-.hero-mini-info {
+/* .hero-mini-info {
   position: absolute;
   bottom: 2.5rem;
   left: 50%;
@@ -248,7 +248,8 @@
   flex-wrap: wrap;
   gap: 1.2rem;
   justify-content: center;
-}
+  padding-bottom: 1rem;
+} */
 
 /* ================= RESPONSIVE ================= */
 
@@ -261,11 +262,12 @@
     padding: 0 6%;
   }
 
-  .hero-mini-info {
+  /* .hero-mini-info {
     font-size: 0.8rem;
     padding: 0.7rem 1.5rem;
     gap: 0.8rem;
-  }
+    padding-bottom: 1rem;
+  } */
 
   .btn-primary,
   .btn-outline {

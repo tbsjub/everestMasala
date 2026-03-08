@@ -8,15 +8,15 @@ export default function Footer() {
       <div className="footer-container">
 
         {/* Restaurant Info */}
-        <div className="footer-col">
+        <div className="footer-col logo-col">
           <div className="flogo-container">
                       <img src={logo} alt="Everest Logo" />
           </div>
           <h3>Everest Masala</h3>
 
           <div className="footer-contact">
-            <span><FaMapMarkerAlt /> Prague, Czech Republic</span>
-            <span><FaPhoneAlt /> +420 XXX XXX XXX</span>
+            <span><FaMapMarkerAlt /> staroměstské náměstí mladá boleslav</span>
+            <span><FaPhoneAlt /> +420 725 948 722</span>
           </div>
         </div>
 
@@ -57,7 +57,7 @@ export default function Footer() {
 
           <div className="footer-social">
 
-            <a href="#"><FaFacebookF /></a>
+            <a href="https://www.facebook.com/people/Everest-masala/61583347953938/"><FaFacebookF /></a>
             <a href="#"><FaInstagram /></a>
 
           </div>
