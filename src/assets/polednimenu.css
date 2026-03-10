@@ -1,0 +1,618 @@
+/* ── Fonts ────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+
+/* ── Variables ────────────────────────────────────────────────── */
+:root {
+  --orange:      #ff8300;
+  --orange-soft: rgba(255,131,0,0.12);
+  --orange-glow: rgba(255,131,0,0.25);
+  --navy:        #0f1b2d;
+  --navy-mid:    #162236;
+  --navy-light:  #1e3050;
+  --dark:       #1a1208;
+  --cream-mid:   #f3e8d5;
+  --cream-dark:  #e8d5b5;
+  --text:        #1a1208;
+  --text-mid:    #5a4a35;
+  --text-light:  #9a8a70;
+  --white:       #ffffff;
+  --radius:      12px;
+  --radius-sm:   7px;
+  --shadow:      0 4px 20px rgba(0,0,0,0.09);
+  --shadow-md:   0 8px 32px rgba(0,0,0,0.13);
+  --trans:       0.28s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ── Reset ────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Keyframes ────────────────────────────────────────────────── */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulseDot {
+  0%,100% { transform: scale(1); }
+  50%      { transform: scale(1.5); }
+}
+
+/* ── Outer Wrapper ────────────────────────────────────────────── */
+.pm-wrap {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--text);
+}
+
+/* ── HEADER ───────────────────────────────────────────────────── */
+.pm-header {
+  background: var(--navy);
+  padding: 28px 32px 24px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pm-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 120% at 10% 50%, rgba(255,131,0,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 80% at 90% 30%, rgba(255,131,0,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.pm-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--orange) 35%, var(--orange) 65%, transparent 100%);
+}
+
+.pm-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  position: relative;
+  z-index: 1;
+}
+
+.pm-brand-sub {
+  font-size: 0.62rem;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.pm-header-main {
+  position: relative;
+  z-index: 1;
+}
+
+.pm-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.pm-hours {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.45);
+  margin-top: 6px;
+  letter-spacing: 0.06em;
+}
+
+/* ── DAY NAV ──────────────────────────────────────────────────── */
+.pm-nav {
+  background: var(--navy-mid);
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  box-shadow: 0 3px 16px rgba(0,0,0,0.28);
+}
+
+.pm-nav::-webkit-scrollbar { display: none; }
+
+.pm-nav-btn {
+  flex: 1;
+  min-width: 80px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  padding: 13px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  transition: var(--trans);
+  position: relative;
+  color: rgba(255,255,255,0.4);
+}
+
+.pm-nav-btn:hover {
+  background: rgba(255,131,0,0.06);
+  color: rgba(255,255,255,0.75);
+}
+
+.pm-nav-btn.active {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+}
+
+.nav-cz {
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.nav-en {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+}
+
+/* "dnes" pill — shown only on the current weekday button */
+.nav-today-pill {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: var(--orange);
+  color: var(--white);
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 5px;
+  border-radius: 3px;
+  animation: pulseDot 2.5s ease-in-out infinite;
+}
+
+/* ── CONTENT TRANSITIONS ──────────────────────────────────────── */
+.pm-fade-out {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.pm-fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.28s ease 0.04s, transform 0.28s ease 0.04s;
+}
+
+/* ── MAIN ─────────────────────────────────────────────────────── */
+.pm-main {
+  flex: 1;
+}
+
+/* ── DAY BANNER ───────────────────────────────────────────────── */
+.pm-day-banner {
+  background: var(--navy-light);
+  display: flex;
+  align-items: stretch;
+  min-height: 130px;
+  overflow: hidden;
+  position: relative;
+}
+
+.pm-day-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 100% at 0% 50%, rgba(255,131,0,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.pm-day-banner-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 28px 32px;
+  gap: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.pm-day-cz {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+}
+
+.pm-day-en {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── IMAGE WRAPPER (the container div) ────────────────────────── */
+.pm-day-image {
+  width: clamp(140px, 25%, 220px);
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  background: rgba(0,0,0,0.3);
+}
+
+/* Diagonal stripe texture sits behind the photo */
+.pm-day-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 8px,
+    rgba(255,131,0,0.04) 8px,
+    rgba(255,131,0,0.04) 16px
+  );
+}
+
+/* ── ACTUAL PHOTO (the <img> tag) ─────────────────────────────── */
+.pm-day-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  z-index: 1;
+}
+
+/* ── PLACEHOLDER (shown when no image) ───────────────────────── */
+.pm-img-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  z-index: 1;
+}
+
+.pm-img-placeholder span {
+  font-size: 2.4rem;
+  opacity: 0.3;
+}
+
+.pm-img-placeholder small {
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ── BODY ─────────────────────────────────────────────────────── */
+.pm-body {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 28px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── TOP ROW: soups + drinks ──────────────────────────────────── */
+.pm-top-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.pm-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pm-card-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-light);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--cream-mid);
+}
+
+.pm-soup-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.soup-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.soup-en {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text-light);
+}
+
+.soup-price {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--orange);
+  white-space: nowrap;
+}
+
+.pm-drink-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.drink-vol {
+  font-size: 0.65rem;
+  color: var(--text-light);
+  background: var(--cream-mid);
+  padding: 2px 6px;
+  border-radius: 3px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.drink-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  flex: 1;
+}
+
+.drink-desc {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--text-light);
+}
+
+.drink-price {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--orange);
+  white-space: nowrap;
+}
+
+/* ── SECTION DIVIDER ──────────────────────────────────────────── */
+.pm-mains-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-light);
+}
+
+.mains-line {
+  flex: 1;
+  height: 1px;
+  background: var(--cream-dark);
+}
+
+/* ── MAIN COURSE ITEMS ────────────────────────────────────────── */
+.pm-mains {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pm-main-item {
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  transition: var(--trans);
+  animation: slideUp 0.35s ease both;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.pm-main-item:hover {
+  border-left-color: var(--orange);
+  transform: translateX(3px);
+  box-shadow: var(--shadow);
+}
+
+.pm-main-item.is-thali {
+  background: linear-gradient(135deg, #fff9f0, #fff5e8);
+  border-left-color: var(--orange);
+}
+
+.main-number {
+  width: 26px;
+  height: 26px;
+  background: var(--navy);
+  color: var(--orange);
+  border-radius: 50%;
+  font-size: 0.72rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.is-thali .main-number {
+  background: var(--orange);
+  color: var(--white);
+}
+
+.main-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.main-names {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 3px;
+}
+
+.main-cz {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.main-sep {
+  color: var(--text-light);
+  font-weight: 300;
+}
+
+.main-en {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-mid);
+}
+
+.main-desc {
+  font-size: 0.72rem;
+  color: var(--text-light);
+  line-height: 1.4;
+}
+
+.main-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.main-price {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+/* Spice dots */
+.spice-dots {
+  display: flex;
+  gap: 3px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cream-dark);
+  transition: var(--trans);
+}
+
+.dot.on {
+  background: var(--orange);
+}
+
+.spice-none {
+  font-size: 0.6rem;
+  color: var(--text-light);
+  background: var(--cream-mid);
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.thali-tag {
+  font-size: 0.58rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--orange);
+  color: var(--white);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* ── SIDES NOTE ───────────────────────────────────────────────── */
+.pm-sides {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--cream-mid);
+  border: 1px dashed var(--cream-dark);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+.sides-icon {
+  font-size: 1.1rem;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.sides-extra {
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+
+/* ── RESPONSIVE ───────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .pm-header { padding: 22px 20px 20px; }
+  .pm-title  { font-size: 1.9rem; }
+
+  .pm-nav-btn { min-width: 60px; padding: 10px 6px 8px; }
+  .nav-en     { display: none; }
+
+  .pm-day-banner-left { padding: 20px; }
+  .pm-day-image       { width: 110px; }
+
+  .pm-body    { padding: 20px 14px 12px; gap: 16px; }
+  .pm-top-row { grid-template-columns: 1fr; }
+
+  .pm-main-item { padding: 12px; gap: 10px; }
+  .main-cz      { font-size: 0.88rem; }
+  .main-desc    { display: none; }
+}
+
+@media (max-width: 380px) {
+  .pm-day-image        { display: none; }
+  .pm-day-banner-left  { padding: 18px; }
+  .main-number         { width: 22px; height: 22px; font-size: 0.65rem; }
+}

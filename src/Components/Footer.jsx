@@ -9,9 +9,6 @@ export default function Footer() {
 
         {/* Restaurant Info */}
         <div className="footer-col logo-col">
-          <div className="flogo-container">
-                      <img src={logo} alt="Everest Logo" />
-          </div>
           <h3>Everest Masala</h3>
 
           <div className="footer-contact">
@@ -20,34 +17,18 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Quick Links */}
-        <div className="footer-col">
-          <h4>Quick Links</h4>
-
-          <a href="#">Home</a>
-          <a href="#">Menu</a>
-          <a href="#">Gallery</a>
-          <a href="#">Reservations</a>
-          <a href="#">Contact</a>
-        </div>
-
         {/* Opening Hours */}
         <div className="footer-col">
           <h4>Opening Hours</h4>
 
           <div className="hours">
-            <span>Mon - Fri</span>
+            <span>Mon - Sat</span>
             <span>11:00 - 22:00</span>
           </div>
 
           <div className="hours">
-            <span>Saturday</span>
-            <span>12:00 - 23:00</span>
-          </div>
-
-          <div className="hours">
             <span>Sunday</span>
-            <span>12:00 - 21:00</span>
+            <span>11:00 - 21:00</span>
           </div>
         </div>
 
@@ -61,11 +42,16 @@ export default function Footer() {
             <a href="#"><FaInstagram /></a>
 
           </div>
+        </div>
 
-          <p className="footer-note">
-            Order online through our delivery partners.
-          </p>
+        <div className="footer-col">
+          <h4>Company Info</h4>
 
+          <div className="company-info">
+
+            <span>Bohara s.r.o</span>
+            <span>IČO: 09436669</span>
+          </div>
         </div>
 
       </div>

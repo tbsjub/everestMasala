@@ -71,20 +71,17 @@ export default function Hero() {
           </p>
 
           <div className="hero-buttons">
-            <button className="btn-primary">
+            <Link to="/reservation" className="btn-primary">
               <i className="fas fa-calendar-check"></i> Book Now
-            </button>
-
-            <Link to="/menu" className="btn-outline">
-              <i className="fas fa-utensils"></i> Explore Menu
             </Link>
 
-            <button
-              className="btn-outline"
-              onClick={() => window.open("https://wolt.com")}
-            >
-              <i className="fas fa-bolt"></i> Order via Wolt
-            </button>
+            <Link to="/menu" className="btn-outline">
+              <i className="fas fa-utensils"></i> À la carte
+            </Link>
+            
+            <Link to="/poledni-menu" className="btn-outline">
+              <i className="fas fa-bolt"></i> Poledni Menu
+            </Link>
           </div>
         </div>
       </div>

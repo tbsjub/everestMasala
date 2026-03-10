@@ -10,24 +10,28 @@ export default function Partners() {
       logo: wolt,
       description: "Fast delivery",
       action: "Order",
+      link: "https://wolt.com",
     },
     {
       name: "Foodora",
       logo: foodora,
       description: "Local favorite",
       action: "Order",
+      link: "https://foodora.cz",
     },
     {
       name: "Bolt",
       logo: bolt,
       description: "Best prices",
       action: "Order",
+      link: "https://bolt.eu",
     },
     {
       name: "Takeaway",
       logo: "https://cdn-icons-png.flaticon.com/512/1694/1694708.png",
       description: "Pickup in 15m",
       action: "Call",
+      link: "tel:+420725948722",
     },
   ];
 
@@ -47,7 +51,14 @@ export default function Partners() {
             />
             <h3>{partner.name}</h3>
             <p>{partner.description}</p>
-            <a className="order-btn">{partner.action}</a>
+            <a
+              href={partner.link}
+              className="order-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {partner.action}
+            </a>
           </div>
         ))}
       </div>

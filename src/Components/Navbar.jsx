@@ -36,14 +36,21 @@ export default function Navbar() {
 
   // --- Determine current page for active links (if not using router) ---
   const location = useLocation();
-const currentPath = location.pathname;
+  const currentPath = location.pathname;
 
-  const links = [
-    { name: "Home", path: "/" },
-    { name: "Our Menu", path: "/menu" }, // Use Link if using React Router
-    { name: "Branches", path: "/branches" },
-    { name: "Reviews", path: "/reviews" },
-  ];
+   const links = [
+  { name: "Home", path: "/" },
+  { name: "Our Menu", path: "/menu" },
+  { name: "Poledni Menu", path: "/poledni-menu" },
+  {
+    name: "Branches",
+    children: [
+      { name: "Ústí nad Labem", url: "https://indickausti.cz/" },
+      { name: "Nymburk", url: "https://indickanymburk.cz/" },
+      { name: "Litoměřice", url: "https://www.indickalitomerice.cz/" },
+    ],
+  },
+];
 
   return (
     <>
@@ -93,21 +100,45 @@ const currentPath = location.pathname;
 
           {/* Right Links + Reserve */}
           <div className="nav-links right">
-            {links.slice(2).map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className={`nav-item ${
-                  link.path === currentPath ? "active" : ""
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <Link to="/reserve" className="btn-reserve">
-              <i className="fas fa-chair"></i> Reserve Table
+              {links.slice(2).map((link) => {
+                if (link.children) {
+                  return (
+                    <div key={link.name} className="nav-item dropdown">
+                      {link.name}
+                      <div className="dropdown-menu">
+                        {link.children.map((child) => (
+                          <a
+                            key={child.name}
+                            href={child.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="dropdown-item"
+                          >
+                            {child.name}
+                          </a>
+                        ))}
+                      </div>
+              </div>
+            );
+          }
+
+          return (
+            <Link
+              key={link.name}
+              to={link.path}
+              className={`nav-item ${
+                link.path === currentPath ? "active" : ""
+              }`}
+            >
+              {link.name}
             </Link>
-          </div>
+          );
+        })}
+
+        <Link to="/reservation" className="btn-reserve">
+          <i className="fas fa-chair"></i> Reserve Table
+        </Link>
+      </div>
 
          <div className="lang-dropdown">
           <button
@@ -133,7 +164,7 @@ const currentPath = location.pathname;
             className="hamburger"
             onClick={() => setIsMenuOpen((prev) => !prev)}
           >
-            <i className="fas fa-bars-staggered"></i>
+            <i className="fas fa-bars"></i>
           </div>
         </nav>
       </header>
@@ -168,7 +199,7 @@ const currentPath = location.pathname;
         ))}
 
         <Link
-          to="/reserve"
+          to="/reservation"
           className="mobile-item"
           style={{ color: "var(--primary)" }}
           onClick={() => setIsMenuOpen(false)}

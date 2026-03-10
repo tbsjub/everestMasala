@@ -257,6 +257,44 @@ body {
   background: rgba(255,131,0,0.2);
 }
 
+/* branches dropdown */
+.dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(15, 10, 5, 0.95);
+  padding: 10px 0;
+  border-radius: 8px;
+  min-width: 180px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: 0.25s;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 10px 16px;
+  color: #f8edda;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  background: rgba(212,160,23,0.06);
+}
+
 /* --- SCROLL EFFECT --- */
 
 .header-wrapper.scrolled .top-bar {
@@ -282,6 +320,7 @@ body {
   display: none;
   cursor: pointer;
   color: white;
+  z-index: 1010;
   font-size: 1.8rem;
 }
 
@@ -304,8 +343,9 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
+  overflow-y: hidden;
   background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95));
   background-size: cover;
   background-position: center;
@@ -351,7 +391,8 @@ body {
 
   .top-bar,
   .nav-links,
-  .logo-container {
+  .logo-container,
+  .lang-dropdown {        /* ← was missing, was pushing hamburger off-screen */
     display: none;
   }
 
@@ -362,9 +403,14 @@ body {
     align-items: center;
   }
 
-  .hamburger {
-    display: block;
-  }
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px; /* space between bars */
+}
+
 
   .mobile-logo-wrap {
     display: flex;

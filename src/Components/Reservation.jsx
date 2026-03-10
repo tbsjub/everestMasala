@@ -1,5 +1,6 @@
 import "../assets/reservation.css";
 import { FaMapMarkedAlt, FaClock, FaPhoneAlt, FaEnvelope, FaCalendarCheck } from "react-icons/fa";
+import ReservationForm from "./ReservationForm";
 
 export default function Reservation() {
 
@@ -55,44 +56,7 @@ export default function Reservation() {
       <div className="reserve-form">
 
         <h3>Reserve a Table</h3>
-
-        <form onSubmit={handleSubmit}>
-
-          <div className="form-group">
-            <input type="text" placeholder="Name" required />
-          </div>
-
-          <div className="form-group">
-            <input type="email" placeholder="Email" required />
-          </div>
-
-          <div className="form-group">
-            <input type="text" placeholder="Phone" />
-          </div>
-
-          <div className="form-group">
-            <select required>
-              <option value="">Select Guests</option>
-              <option>2 persons</option>
-              <option>4 persons</option>
-              <option>6+ persons</option>
-            </select>
-          </div>
-
-          <div className="form-group">
-            <input type="date" required />
-          </div>
-
-          <div className="form-group">
-            <textarea rows="3" placeholder="Special requests..."></textarea>
-          </div>
-
-          <button className="form-btn" type="submit">
-            <FaCalendarCheck style={{ marginRight: "8px" }} />
-            Book Now
-          </button>
-
-        </form>
+        <ReservationForm />
       </div>
 
     </section>

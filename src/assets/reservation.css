@@ -130,18 +130,25 @@
 /* ============================= */
 
 @media (max-width: 900px) {
-
   .reserve-section {
-    padding: 4rem 6%;
     flex-direction: column;
+    gap: 2rem; /* smaller gap on mobile */
+    padding: 2rem 6%; /* optional: reduce padding */
+  }
+
+  .reserve-info,
+  .reserve-form {
+    flex: 1 1 100%;
+    max-width: 100%;
   }
 
   .reserve-form {
-    padding: 2rem;
+    padding: 1rem;
+    width: 100%;
+    flex: 1 1 100%;
   }
 
   .map-placeholder {
     height: 260px;
   }
-
 }

@@ -9,6 +9,7 @@ import Reservation from './Components/Reservation.jsx'
 import Partners from './Components/Partners.jsx'
 import Footer from './Components/Footer.jsx'
 import Menu from './Components/Menu.jsx'
+import Polednimenu from './Components/Polednimenu.jsx'
 
 function App() {
   return (
@@ -24,17 +25,16 @@ function App() {
             <Gallery/>
             <Reservation/>
             <Partners/>
-            <Footer/>
           </>
         } />
         
         {/* Menu page route */}
         <Route path="/menu" element={<Menu />} />
-        
-        {/* Add more routes as needed */}
-        {/* <Route path="/branches" element={<Branches />} /> */}
-        {/* <Route path="/reviews" element={<Reviews />} /> */}
+        <Route path="/reservation" element={<Reservation />} />
+        <Route path="/poledni-menu" element={<Polednimenu />} />
+    
       </Routes>
+      <Footer/>
     </>
   )
 }

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import "../assets/menu.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { useLocation, Link } from "react-router-dom"; // only if using React Router
 
 import everest06 from "../assets/images/everest-06.webp";
 import everest07 from "../assets/images/everest-07.webp";
@@ -49,6 +50,8 @@ import kozel from "../assets/images/kozel.webp";
 import pilsner from "../assets/images/pilsner.jpg";
 import gambrinus from "../assets/images/gambrinus.png";
 import fangalo from "../assets/images/fangalo.jpg";
+import vegan01 from "../assets/images/vegan01.jpeg";
+import softDrinks from "../assets/images/softDrinks.webp";
 
 // ─── FULL DATASET ─────────────────────────────────────────────────────────────
 const menuData = [
@@ -70,9 +73,9 @@ const menuData = [
     items: [
       { name: "Papadum",               en: "Crispy bread",                    price: "20",  desc: "Křupavé placky z cizrnové mouky a indického koření. Crispy bread.",                          allergy: "1,9,10",     t: everest59 },
       { name: "Vegetable mix Pakora",  en: "Mixed vegetable pakora",          price: "130", desc: "Mixed vegetable exotically spiced with carom seeds, battered in gram flour and deep-fried.", allergy: "1,9,10",     t: everest69 },
-      { name: "Chicken Wings Pakora",  en: "Kuřecí křídla v cizrnové mouce", price: "145", desc: "Chicken wings delicately marinated with garlic and ginger in gram flour and deep-fried.",    allergy: "1,3,9,10",   t: everest73 },
+      { name: "Chicken Wings Pakora",  en: "Kuřecí křídla v cizrnové mouce", price: "130", desc: "Chicken wings delicately marinated with garlic and ginger in gram flour and deep-fried.",    allergy: "1,3,9,10",   t: everest73 },
       { name: "Onion Bhaji",           en: "Cibule Bhaji",                    price: "115", desc: "Sliced onions exotically spiced with carom seeds, battered in gram flour and deep-fried.",  allergy: "1,9,10",     t: everest70 },
-      { name: "Kuřecí pakora",         en: "Chicken Pakora",                  price: "130", desc: "Chicken slices delicately marinated with garlic, coated in gram flour and deep-fried.",      allergy: "1,3,9,10",   t: everest73 },
+      { name: "Kuřecí pakora",         en: "Chicken Pakora",                  price: "145", desc: "Chicken slices delicately marinated with garlic, coated in gram flour and deep-fried.",      allergy: "1,3,9,10",   t: everest73 },
       { name: "Shrimp pakora",         en: "Krevetí pakora",                  price: "165", desc: "Shrimps delicately marinated with garlic, coated in gram flour and deep-fried.",             allergy: "1,2,3,9,10", t: everest72 },
       { name: "Paneer pakora",         en: "Sýrová pakora",                   price: "165", desc: "Home-made cheese covered in gram flour and deep-fried.",                                     allergy: "1,7,10",     t: everest72 },
       { name: "Samosa",                en: "Plněné taštičky",                 price: "90",  desc: "Triangular pastry filled with spiced potatoes, green peas and cashews.",                    allergy: "1,9,10",     t: everest68 },
@@ -80,7 +83,7 @@ const menuData = [
   },
   {
     id: "vegan", title: "Vegan", cz: "VEGANSKÉ POKRMY / VEGAN DISHES",
-    img: everest38,
+    img: vegan01,
     items: [
       { name: "Plain Palak",        en: "Klasická špenátová omáčka", price: "179", desc: "Cooked with garlic-ginger paste, spices and delicious spinach.",                                            allergy: "7,8,9,10", t: palak    },
       { name: "Kmínové brambory",   en: "Jeera Aloo",                price: "169", desc: "Jeera Aloo with fresh onions, garlic, ginger and tomatoes.",                                               allergy: "7,8,9,10", t: everest38 },
@@ -124,7 +127,6 @@ const menuData = [
       { name: "Kuřecí Thali",      en: "Chicken Thali",                                 price: "219", desc: "Three different sauces with yogurt salad and rice or pancakes.",           allergy: "7,8,9,10",   t: everest06 },
       { name: "Jehněčí Thali",     en: "Lamb Thali",                                    price: "259", desc: "Three different sauces with yogurt salad and rice or pancakes.",           allergy: "7,8,9,10",   t: everest06 },
       { name: "Krevetí Thali",     en: "Shrimps Thali",                                 price: "259", desc: "Three different sauces with yogurt salad and rice or pancakes.",           allergy: "2,7,8,9,10", t: everest07 },
-      { name: "Máslový mix Thali", en: "Butter Mix Thali (chicken, lamb, shrimps, pork)",price: "259", desc: "Three different sauces with yogurt salad and rice or pancakes.",          allergy: "7,8,9,10",   t: everest06 },
     ],
   },
   {
@@ -271,7 +273,7 @@ const menuData = [
       { name: "Tandoori Naan",      en: "Indický chléb",         price: "45", desc: "Traditional Indian bread baked in Tandoor oven.",          allergy: "1,7",    t: everest62 },
       { name: "Butter Naan",        en: "Máslová placka",        price: "55", desc: "Two-layer butter bread baked in Tandoor oven.",             allergy: "1,7,10", t: everest47 },
       { name: "Garlic Naan",        en: "Česneková placka",      price: "55", desc: "Indian bread with garlic baked in Tandoor oven.",           allergy: "1,7,10", t: everest62 },
-      { name: "Chilli Garlic Naan", en: "Pálivá česneková",      price: "60", desc: "Spicy garlic naan bread.",                                  allergy: "1,7",    t: everest55 },
+      { name: "Chilli Garlic Naan", en: "Pálivá česneková",      price: "60", desc: "Spicy garlic naan bread.",                                  allergy: "1,7",    t: everest62 },
       { name: "Lachha Paratha",     en: "Lachha Paratha",        price: "55", desc: "Multi-layered flat bread.",                                 allergy: "1,7",    t: everest62 },
       { name: "Aloo Paratha",       en: "Placka s bramborami",   price: "65", desc: "Bread stuffed with potatoes and Indian spices baked in Tandoor.", allergy: "1,7", t: everest62 },
       { name: "Plain Rice",         en: "Obyčejná rýže",         price: "49", desc: "Steamed basmati rice.",                                    allergy: "",       t: everest64 },
@@ -290,16 +292,16 @@ const menuData = [
   },
   {
     id: "drinks", title: "Drinks", cz: "NÁPOJE / DRINKS",
-    img: everest64,
+    img: softDrinks,
     items: [
-      { name: "Coca Cola",             en: "Coca Cola",             price: "49", desc: "0,33 l", allergy: "",    t: everest64 },
-      { name: "Sprite",                en: "Sprite",                price: "49", desc: "0,33 l", allergy: "",    t: everest64 },
-      { name: "Mango Lassi",           en: "Mango Lassi",           price: "45", desc: "0,33 l", allergy: "1,7", t: everest64 },
-      { name: "Slaný Lassi",           en: "Salted Lassi",          price: "45", desc: "0,33 l", allergy: "1,7", t: everest64 },
-      { name: "Indický mango džus",    en: "Indian Mango Juice",    price: "49", desc: "0,33 l", allergy: "",    t: everest64 },
-      { name: "Indický čaj s mlékem",  en: "Indian Tea with Milk",  price: "55", desc: "0,33 l", allergy: "",    t: everest64 },
-      { name: "Zázvorový čaj s medem", en: "Ginger Tea with Honey", price: "55", desc: "0,20 l", allergy: "",    t: everest64 },
-      { name: "Expresso",              en: "Espresso",              price: "49", desc: "0,04 l", allergy: "",    t: everest64 },
+      { name: "Coca Cola",             en: "Coca Cola",             price: "49", desc: "0,33 l", allergy: "",    t: softDrinks },
+      { name: "Sprite",                en: "Sprite",                price: "49", desc: "0,33 l", allergy: "",    t: softDrinks },
+      { name: "Mango Lassi",           en: "Mango Lassi",           price: "45", desc: "0,33 l", allergy: "1,7", t: softDrinks },
+      { name: "Slaný Lassi",           en: "Salted Lassi",          price: "45", desc: "0,33 l", allergy: "1,7", t: softDrinks },
+      { name: "Indický mango džus",    en: "Indian Mango Juice",    price: "49", desc: "0,33 l", allergy: "",    t: softDrinks },
+      { name: "Indický čaj s mlékem",  en: "Indian Tea with Milk",  price: "55", desc: "0,33 l", allergy: "",    t: softDrinks },
+      { name: "Zázvorový čaj s medem", en: "Ginger Tea with Honey", price: "55", desc: "0,20 l", allergy: "",    t: softDrinks },
+      { name: "Expresso",              en: "Espresso",              price: "49", desc: "0,04 l", allergy: "",    t: softDrinks },
     ],
   },
   {
@@ -491,7 +493,7 @@ export default function EverestMasalaMenu() {
   // ── RENDER ──────────────────────────────────────────────────────────────────
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       {/* Atmospheric background */}
       <div className="bg-layer">
         <div className="bg-layer__gradient" />
@@ -567,12 +569,12 @@ export default function EverestMasalaMenu() {
         <h1 className="hero__title">EVEREST MASALA</h1>
         <p className="hero__subtitle">Royal Taste of Himalayas</p>
         <div className="hero__btns">
-          <a
-            href="https://everestmasala.cz/reservation/index_reserve.php"
+          <Link
+            to="/reservation"
             className="btn btn--primary"
           >
             Book Table
-          </a>
+          </Link>
           <button
             className="btn btn--outline"
             onClick={() => scrollTo(menuData[0].id)}
@@ -619,8 +621,6 @@ export default function EverestMasalaMenu() {
           </div>
         ))}
       </main>
-
-      <Footer />
     </>
   );
 }

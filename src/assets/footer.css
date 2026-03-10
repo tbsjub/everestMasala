@@ -3,10 +3,10 @@
 /* ================= */
 
 .footer {
-  background: #0c0f15;
+  background: rgba(15, 10, 5, 0.95);
   padding-top: 5rem;
   border-top: 1px solid rgba(212,160,23,0.2);
-  padding: 35px 20px;
+  padding: 25px 20px;
 }
 
 /* GRID */
@@ -78,9 +78,11 @@
 
 .hours {
   display: flex;
-  justify-content: space-between;
   margin-bottom: 0.5rem;
+  gap: 3rem;
   color: var(--color-secondary-light);
+  justify-content: center;
+  align-items: center;
 }
 
 /* CONTACT */
@@ -95,6 +97,9 @@
 
 .footer-social {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
   margin-top: 0.5rem;
 }
@@ -117,6 +122,13 @@
   transform: translateY(-3px);
 }
 
+.company-info span {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-secondary-light);
+  margin-bottom: 0.4rem;
+}
+
 /* NOTE */
 
 .footer-note {
@@ -128,7 +140,7 @@
 
 .footer-bottom {
   margin-top: 1rem;
-  padding: 1rem 10%;
+  padding: 0.3rem 10% 0 10%;
   text-align: center;
   border-top: 1px solid rgba(255,255,255,0.05);
 }
@@ -137,3 +149,4 @@
   color: var(--color-secondary-light);
   font-size: 0.9rem;
 }
+
